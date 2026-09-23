@@ -1,4 +1,4 @@
-﻿  // Smooth scroll for ALL anchor links
+// Smooth scroll for ALL anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const target = document.querySelector(this.getAttribute('href'));
@@ -10,7 +10,8 @@
       }
     });
   });
-  // Header shadow on scroll
+
+// Header shadow on scroll
   window.addEventListener('scroll', () => {
     document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
   });
@@ -48,3 +49,25 @@
       if (a.getAttribute('href') === '#' + current) a.classList.add('active');
     });
   });
+
+  // Session / logout (nav)
+  const navUser = document.getElementById('navUser');
+  if (navUser) {
+    const raw = localStorage.getItem('ypora_session');
+    let session = null;
+    try { session = raw ? JSON.parse(raw) : null; } catch (e) { session = null; }
+
+    if (session && session.name) {
+      const roleLabel = session.role === 'admin' ? 'Administrador' : 'Usuário';
+      navUser.innerHTML = `
+        <span class="user-greet">👋 ${session.name} · ${roleLabel}</span>
+        <button type="button" class="btn-logout" id="btnLogout">Sair</button>
+      `;
+      document.getElementById('btnLogout').addEventListener('click', () => {
+        localStorage.removeItem('ypora_session');
+        window.location.href = 'login.html';
+      });
+    } else {
+      navUser.innerHTML = `<a href="login.html" class="btn-login">Entrar</a>`;
+    }
+  }
