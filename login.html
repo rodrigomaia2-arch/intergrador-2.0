@@ -23,10 +23,11 @@
   </a>
 
   <main class="login-card">
-    <h1>Bem-vindo de volta</h1>
-    <p class="login-sub">Entre para acompanhar a qualidade da água em Paraíso do Tocantins.</p>
+    <h1 id="authTitle">Bem-vindo de volta</h1>
+    <p class="login-sub" id="authSub">Entre para acompanhar a qualidade da água em Paraíso do Tocantins.</p>
 
     <div class="login-error" id="loginError"></div>
+    <div class="login-success" id="loginSuccess"></div>
 
     <form id="loginForm" novalidate>
       <div class="form-group">
@@ -39,7 +40,7 @@
         <label for="password">Senha</label>
         <div class="password-wrap">
           <input type="password" id="password" name="password" placeholder="Digite sua senha" autocomplete="current-password" required>
-          <button type="button" class="toggle-password" id="togglePassword" aria-label="Mostrar senha">👁️</button>
+          <button type="button" class="toggle-password" id="togglePassword" data-target="password" aria-label="Mostrar senha">👁️</button>
         </div>
       </div>
 
@@ -49,9 +50,43 @@
       </div>
 
       <button type="submit" class="btn-primary btn-block">Entrar</button>
+
+      <p class="auth-switch">Não tem uma conta? <a href="#" id="showSignup">Criar conta</a></p>
     </form>
 
-    <p class="login-hint">Acesso de teste: <strong>admin@ypora.com</strong> / <strong>admin123</strong> para o painel administrativo. Qualquer outro email e senha válidos entram como usuário comum.</p>
+    <form id="signupForm" novalidate hidden>
+      <div class="form-group">
+        <label for="signupName">Nome</label>
+        <input type="text" id="signupName" name="name" placeholder="Seu nome completo" autocomplete="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="signupEmail">Email</label>
+        <input type="email" id="signupEmail" name="email" placeholder="seu@email.com" autocomplete="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="signupPassword">Senha</label>
+        <div class="password-wrap">
+          <input type="password" id="signupPassword" name="password" placeholder="Mínimo de 6 caracteres" autocomplete="new-password" required>
+          <button type="button" class="toggle-password" data-target="signupPassword" aria-label="Mostrar senha">👁️</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="signupConfirm">Confirmar senha</label>
+        <div class="password-wrap">
+          <input type="password" id="signupConfirm" name="confirm" placeholder="Repita a senha" autocomplete="new-password" required>
+          <button type="button" class="toggle-password" data-target="signupConfirm" aria-label="Mostrar senha">👁️</button>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-primary btn-block">Criar conta</button>
+
+      <p class="auth-switch">Já tem uma conta? <a href="#" id="showLogin">Entrar</a></p>
+    </form>
+
+    <p class="login-hint">Acesso de teste: <strong>admin@ypora.com</strong> / <strong>admin123</strong> para o painel administrativo. Usuários comuns precisam criar uma conta.</p>
   </main>
 
 <script src="login.js"></script>
