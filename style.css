@@ -137,8 +137,15 @@
   }
   .hero h1 em { font-style: italic; color: var(--blue-main); }
   .hero p {
-    font-size: 17px; line-height: 1.7; color: var(--gray-600);
-    margin-bottom: 40px; max-width: 480px;
+    font-size: 16px; line-height: 1.7; color: var(--gray-600);
+    margin-bottom: 14px; max-width: 520px;
+  }
+  .hero-text { margin-bottom: 36px; }
+  .hero-text p:last-child { margin-bottom: 0; }
+  .hero .hero-note {
+    font-size: 14px; line-height: 1.6; color: var(--blue-deep);
+    background: var(--blue-glass); border-left: 3px solid var(--blue-main);
+    padding: 10px 14px; border-radius: 8px;
   }
   .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
   .btn-primary {
