@@ -651,3 +651,50 @@
   @media (max-width: 480px) {
     .login-card { padding: 32px 24px; }
   }
+
+  .month-selector {
+  position: relative;
+  display: inline-block;
+}
+
+#monthButton {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 7px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.month-options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 5px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 1000;
+  min-width: 140px;
+}
+
+.month-options.show {
+  display: block;
+}
+
+.month-options button {
+  display: block;
+  width: 100%;
+  border: none;
+  background: white;
+  padding: 10px 14px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.month-options button:hover {
+  background: #f0f0f0;
+}
