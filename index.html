@@ -22,6 +22,7 @@
   <nav>
     <a href="#inicio" class="active">Início</a>
     <a href="#mapa">Mapa PCQs</a>
+    <a href="#amostras">Amostras</a>
     <a href="#tratamento">Tratamento</a>
     <a href="#noticias">Notícias</a>
     <a href="#sobre">Sobre nós</a>
@@ -359,6 +360,18 @@
   </div>
 </section>
 
+<!-- ── SAMPLES SECTION ── -->
+<section class="samples-section" id="amostras">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-tag">📷 Amostras</span>
+      <h2 class="section-title">Fotos da Água dos Setores</h2>
+      <p class="section-sub">Veja as amostras de água coletadas em cada ponto de coleta (PCQ) de Paraíso do Tocantins. Clique em uma foto para ampliar.</p>
+    </div>
+    <div class="samples-grid reveal" id="samplesGrid"></div>
+  </div>
+</section>
+
 <!-- ── ORIGIN SECTION ── -->
 <section id="origem">
   <div class="section-inner">
@@ -679,6 +692,7 @@
       <h4>Navegação</h4>
       <a href="#inicio">Início</a>
       <a href="#mapa">Mapa dos PCQs</a>
+      <a href="#amostras">Fotos das Amostras</a>
       <a href="#origem">Origem da Água</a>
       <a href="#tratamento">Tratamento</a>
       <a href="#dados">Dados</a>
@@ -701,7 +715,6 @@
     <span>Direitos Autorais Reservados</span>
   </div>
 </footer>
-  <script src="script.js"></script>
   <!-- MODAL GALERIA EQUIPE TÉCNICA -->
 <div id="modal-tecnica" class="modal">
   <div class="modal-content">
@@ -739,5 +752,23 @@
     </div>
   </div>
 </div>
+<!-- MODAL FOTO DA AMOSTRA -->
+<div id="modal-amostra" class="modal">
+  <div class="modal-content sample-modal">
+    <span class="close-btn" onclick="closeModal('modal-amostra')">&times;</span>
+    <h2 id="sampleModalTitle"></h2>
+    <p id="sampleModalInfo"></p>
+    <div class="sample-viewer">
+      <button type="button" class="sample-nav" id="samplePrev" aria-label="Foto anterior">‹</button>
+      <img id="sampleModalImg" src="" alt="">
+      <button type="button" class="sample-nav" id="sampleNext" aria-label="Próxima foto">›</button>
+    </div>
+    <div class="sample-modal-footer">
+      <span id="sampleModalCount"></span>
+      <button type="button" class="btn-primary" id="sampleShowData">🗺️ Ver dados deste ponto</button>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>

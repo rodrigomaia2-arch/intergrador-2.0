@@ -656,13 +656,7 @@ function verificarQualidade(data) {
 }
 
 
-// Atualiza as informações do ponto
-function updatePCQ(point) {
-
-  const data = pcqData[point];
-  
-const pcqImage = document.getElementById("pcqImage");
-
+// Fotos da água coletada em cada ponto
 const imagensPCQ = {
   P1: "img/P1 - Paraiso do Ipes.jpeg",
   P2: "img/P2 - Area verde.jpeg",
@@ -681,6 +675,14 @@ const imagensPCQ = {
   P15: "img/P15 - Centro.jpg.jpeg",
   P16: "img/P16 - Setor Oeste.jpg.jpeg"
 };
+
+// Atualiza as informações do ponto
+function updatePCQ(point) {
+
+  const data = pcqData[point];
+  
+const pcqImage = document.getElementById("pcqImage");
+
 
 if (pcqImage && imagensPCQ[point]) {
   pcqImage.src = imagensPCQ[point];
@@ -920,4 +922,68 @@ document.addEventListener('keydown', (event) => {
       if (modal.style.display === 'flex') closeModal(modal.id);
     });
   }
+});
+
+// Galeria de fotos das amostras
+const samplesGrid = document.getElementById('samplesGrid');
+const samplePoints = Object.keys(imagensPCQ);
+let currentSample = 0;
+
+if (samplesGrid) {
+  samplePoints.forEach((point, index) => {
+    const data = pcqData[point] || {};
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'sample-card';
+    card.innerHTML = `
+      <div class="sample-img"><img src="${imagensPCQ[point]}" alt="Amostra de água do ponto ${point}" loading="lazy"></div>
+      <div class="sample-body">
+        <span class="sample-code">${point}</span>
+        <h3>${data.bairro || ''}</h3>
+        <span class="sample-type">${data.tipo || ''}</span>
+      </div>
+    `;
+    card.addEventListener('click', () => openSample(index));
+    samplesGrid.appendChild(card);
+  });
+}
+
+function showSample(index) {
+  currentSample = (index + samplePoints.length) % samplePoints.length;
+  const point = samplePoints[currentSample];
+  const data = pcqData[point] || {};
+  const img = document.getElementById('sampleModalImg');
+  img.src = imagensPCQ[point];
+  img.alt = `Amostra de água do ponto ${point}`;
+  document.getElementById('sampleModalTitle').textContent = `${point} · ${data.bairro || ''}`;
+  document.getElementById('sampleModalInfo').textContent =
+    [data.tipo, data.endereco].filter(Boolean).join(' · ');
+  document.getElementById('sampleModalCount').textContent =
+    `${currentSample + 1} de ${samplePoints.length}`;
+}
+
+function openSample(index) {
+  showSample(index);
+  openModal('modal-amostra');
+}
+
+document.getElementById('samplePrev')?.addEventListener('click', () => showSample(currentSample - 1));
+document.getElementById('sampleNext')?.addEventListener('click', () => showSample(currentSample + 1));
+
+document.addEventListener('keydown', (event) => {
+  const modal = document.getElementById('modal-amostra');
+  if (!modal || modal.style.display !== 'flex') return;
+  if (event.key === 'ArrowLeft') showSample(currentSample - 1);
+  if (event.key === 'ArrowRight') showSample(currentSample + 1);
+});
+
+document.getElementById('sampleShowData')?.addEventListener('click', () => {
+  const point = samplePoints[currentSample];
+  closeModal('modal-amostra');
+  const card = [...document.querySelectorAll('.pcq-card')]
+    .find(c => c.querySelector('.pcq-id').textContent.trim() === point);
+  if (card) card.click();
+  const headerH = document.getElementById('header').offsetHeight;
+  const top = document.getElementById('mapa').getBoundingClientRect().top + window.scrollY - headerH;
+  window.scrollTo({ top, behavior: 'smooth' });
 });
