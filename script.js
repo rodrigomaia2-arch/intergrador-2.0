@@ -896,6 +896,7 @@ function openModal(id) {
   const modal = document.getElementById(id);
   if (modal) {
     modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
   }
 }
 
@@ -903,11 +904,20 @@ function closeModal(id) {
   const modal = document.getElementById(id);
   if (modal) {
     modal.style.display = 'none';
+    document.body.style.overflow = '';
   }
 }
 
 window.onclick = function(event) {
   if (event.target.classList.contains('modal')) {
-    event.target.style.display = 'none';
+    closeModal(event.target.id);
   }
 };
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    document.querySelectorAll('.modal').forEach(modal => {
+      if (modal.style.display === 'flex') closeModal(modal.id);
+    });
+  }
+});

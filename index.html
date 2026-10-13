@@ -637,13 +637,11 @@
       <p class="section-sub">O Yporã é uma iniciativa de transparência e conscientização sobre a qualidade da água em Paraíso do Tocantins. Nosso objetivo é aproximar a população dos dados reais de monitoramento, promovendo confiança e educação ambiental.</p>
     </div>
     <div class="team-grid reveal">
-      <div class="team-card">
+      <div class="team-card team-card-clickable" role="button" tabindex="0" onclick="openModal('modal-tecnica')" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openModal('modal-tecnica'); }">
         <div class="avatar">👩‍🔬</div>
         <h4>Equipe Técnica</h4>
-        <div class="card" onclick="openModal('modal-tecnica')" style="cursor: pointer;">
-  <!-- Seu conteúdo atual da Equipe Técnica -->
-</div>
         <p>Responsável pelo monitoramento e análise dos PCQs</p>
+        <span class="team-card-cta">📷 Ver fotos</span>
       </div>
       <div class="team-card">
         <div class="avatar">💻</div>
