@@ -193,21 +193,49 @@
     background: rgba(23,165,137,0.1); color: var(--teal);
     font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
   }
-  .quality-circle {
-    width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 24px;
-    background: conic-gradient(var(--teal) 0% 85%, var(--blue-pale) 85%);
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 0 0 8px rgba(23,165,137,0.08);
-    position: relative;
-  }
+  
   .quality-circle::after {
     content: ''; position: absolute;
     inset: 12px; border-radius: 50%; background: white;
   }
-  .quality-circle span {
-    position: relative; z-index: 1;
-    font-size: 26px; font-weight: 800; color: var(--teal);
-  }
+  
+.quality-circle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Espaço entre o número e o texto */
+}
+
+.quality-circle span {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 800;
+  color: var(--teal);
+}
+
+.quality-circle small {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  
+  /* Balãozinho arredondado */
+  background-color: #e8f7f5; /* Fundo verde claro/suave */
+  border-radius: 12px;       /* Curvatura do balão */
+  padding: 4px 8px;          /* Espaçamento interno (cima/baixo e lados) */
+  
+  max-width: 80px;
+  text-align: center;        /* Texto centrado dentro do balão */
+  font-size: 10px;
+  line-height: 1.1;
+  font-weight: 700;
+  color: var(--teal);        /* Cor do texto */
+}
+}
+
   .params-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .param-item {
     background: var(--gray-100); border-radius: 12px;
@@ -697,4 +725,92 @@
 
 .month-options button:hover {
   background: #f0f0f0;
+}
+
+
+.pcq-image {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+/* MODAL EQUIPE TÉCNICA */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+
+/* GALERIA DE FOTOS */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f7fafc;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.gallery-item.main-photo {
+  grid-column: 1 / -1; /* Ocupa a largura toda no topo */
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.gallery-item.main-photo img {
+  height: 350px;
+}
+
+.gallery-item span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #008767;
+  padding: 8px 12px;
+  text-align: center;
 }

@@ -53,32 +53,38 @@
     <div class="hero-visual">
       <div class="water-card">
         <div class="card-header-row">
-          <h3>Qualidade Atual</h3>
-          <span class="badge-good">✓ POTÁVEL</span>
-        </div>
-        <div class="quality-circle">
-          <span>85%</span>
-        </div>
-        <div class="params-grid">
-          <div class="param-item">
-            <div class="label">pH</div>
-            <div class="value">7.2 <span class="unit">—</span></div>
-          </div>
-          <div class="param-item">
-            <div class="label">Turbidez</div>
-            <div class="value">0.8 <span class="unit">NTU</span></div>
-          </div>
-          <div class="param-item">
-            <div class="label">Cloro Livre</div>
-            <div class="value">0.5 <span class="unit">mg/L</span></div>
-          </div>
-          <div class="param-item">
-            <div class="label">Fluoreto</div>
-            <div class="value">0.7 <span class="unit">mg/L</span></div>
-          </div>
-        </div>
-        <p class="last-update">🕐 Última atualização: Hoje, 08:30</p>
-      </div>
+         
+<h3>Qualidade Atual</h3>
+<span class="badge-good" id="homeQualityStatus">Dados de setembro</span>
+</div>
+
+<div class="quality-circle">
+  <span>16</span>
+  <small>PCQs monitorados</small>
+</div>
+
+<div class="params-grid">
+  <div class="param-item">
+    <div class="label">pH médio</div>
+    <div class="value" id="homePh">—</div>
+  </div>
+  <div class="param-item">
+    <div class="label">Turbidez média</div>
+    <div class="value"><span id="homeTurbidity">—</span> <span class="unit">NTU</span></div>
+  </div>
+  <div class="param-item">
+    <div class="label">Cloro livre médio</div>
+    <div class="value"><span id="homeChlorine">—</span> <span class="unit">mg/L</span></div>
+  </div>
+  <div class="param-item">
+    <div class="label">Fluoreto médio</div>
+    <div class="value"><span id="homeFluoride">—</span> <span class="unit">mg/L</span></div>
+  </div>
+</div>
+
+<p class="last-update">🕐 Última coleta: <span id="homeLastUpdate">Setembro/2026</span></p>
+</div>
+
     </div>
   </div>
   <div class="wave-top">
@@ -134,8 +140,6 @@
       </div>
       <div class="map-sidebar">
         <h3>Pontos de Coleta (16)</h3>
-       <div class="pcq-info-panel">
-  <h4 id="pcqTitle">P1 · Paraíso dos Ipês</h4>
 
   <div class="pcq-info-panel">
   <h4 id="pcqTitle">P1 · Paraíso dos Ipês</h4>
@@ -159,6 +163,11 @@
     <span class="k">Coordenadas</span>
     <span class="v" id="pcqCoordinates">10°11'48.13"S 48°54'32.24"W</span>
   </div>
+  
+<div class="info-row">
+  <span class="k">Foto do local</span>
+  <img id="pcqImage" src="img/P1 - Paraiso do Ipes.jpeg" alt="Foto do ponto de coleta P1" class="pcq-image">
+</div>
 
   <div class="info-row">
   <span class="k">Mês da coleta</span>
@@ -459,56 +468,69 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>pH</td>
-            <td>—</td>
-            <td>6,0 – 9,5</td>
-            <td class="status-data">Aguardando dados reais</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>Turbidez</td>
-            <td>NTU</td>
-            <td>≤ 5</td>
-            <td class="status-data">Aguardando dados reais</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>Cloro Residual Livre</td>
-            <td>mg/L</td>
-            <td>0,2 – 5,0</td>
-            <td class="status-data">Aguardando dados reais</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>Fluoreto</td>
-            <td>mg/L</td>
-            <td>≤ 1,5</td>
-            <td class="status-data">Aguardando dados reais</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>Coliformes Totais</td>
-            <td>UFC/100mL</td>
-            <td>Ausência</td>
-            <td class="status-data">Aguardando dados reais</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>E. coli</td>
-            <td>UFC/100mL</td>
-            <td>Ausência</td>
-            <td class="status-data">Aguardando dados reais</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>Cor Aparente</td>
-            <td>uH</td>
-            <td>≤ 15</td>
-            <td class="status-data">Aguardando dados reais</td>
-            <td>—</td>
-          </tr>
-        </tbody>
+  <!-- pH -->
+  <tr>
+    <td>pH</td>
+    <td>—</td>
+    <td>6,0 – 9,5</td>
+    <td>7,44</td>
+    <td>Conforme</td>
+  </tr>
+
+  <!-- Turbidez -->
+  <tr>
+    <td>Turbidez</td>
+    <td>NTU</td>
+    <td>&le; 5</td>
+    <td>1,96</td>
+    <td>Conforme</td>
+  </tr>
+
+  <!-- Cloro Residual Livre -->
+  <tr>
+    <td>Cloro Residual Livre</td>
+    <td>mg/L</td>
+    <td>0,2 – 5,0</td>
+    <td>0,47</td>
+    <td>Conforme</td>
+  </tr>
+
+  <!-- Fluoreto -->
+  <tr>
+    <td>Fluoreto</td>
+    <td>mg/L</td>
+    <td>&le; 1,5</td>
+    <td>0,39</td>
+    <td>Conforme</td>
+  </tr>
+
+  <!-- Coliformes Totais -->
+  <tr>
+    <td>Coliformes Totais</td>
+    <td>UFC/100mL</td>
+    <td>Ausência</td>
+    <td>Presença parcial</td>
+    <td>Atenção</td>
+  </tr>
+
+  <!-- E. coli -->
+  <tr>
+    <td>E. coli</td>
+    <td>UFC/100mL</td>
+    <td>Ausência</td>
+    <td>Ausente</td>
+    <td>Conforme</td>
+  </tr>
+
+  <!-- Cor Aparente -->
+  <tr>
+    <td>Cor Aparente</td>
+    <td>uH</td>
+    <td>&le; 15</td>
+    <td>0,0</td>
+    <td>Conforme</td>
+  </tr>
+</tbody>
       </table>
     </div>
   </div>
@@ -565,33 +587,42 @@
       <h2 class="section-title">Notícias sobre Água e Meio Ambiente</h2>
       <p class="section-sub">Fique por dentro das principais novidades relacionadas à água, saneamento e sustentabilidade.</p>
     </div>
-    <div class="news-grid">
-      <div class="news-card reveal">
-        <div class="news-img blue">💧</div>
-        <div class="news-body">
-          <div class="news-cat">Qualidade da Água</div>
-          <h3>Novos parâmetros de potabilidade entram em vigor em 2026</h3>
-          <p>A Portaria GM/MS nº 888/2021 traz atualizações importantes nos padrões de qualidade da água para consumo humano.</p>
-          <div class="news-date">📅 Aguardando notícias reais</div>
-        </div>
-      </div>
-      <div class="news-card reveal">
-        <div class="news-img teal">🌿</div>
-        <div class="news-body">
-          <div class="news-cat">Meio Ambiente</div>
-          <h3>Preservação de nascentes é essencial para o abastecimento regional</h3>
-          <p>Especialistas alertam para a importância da proteção das áreas de recarga hídrica no Tocantins.</p>
-          <div class="news-date">📅 Aguardando notícias reais</div>
-        </div>
-      </div>
-      <div class="news-card reveal">
-        <div class="news-img green">♻️</div>
-        <div class="news-body">
-          <div class="news-cat">Sustentabilidade</div>
-          <h3>Campanha de conscientização sobre uso racional da água em Paraíso do TO</h3>
-          <p>Prefeitura e parceiros promovem ações educativas para reduzir o desperdício de água no município.</p>
-          <div class="news-date">📅 Aguardando notícias reais</div>
-        </div>
+<div class="news-grid">
+  
+  <!-- Notícia 1: Qualidade da Água -->
+  <div class="news-card reveal">
+    <div class="news-img blue">💧</div>
+    <div class="news-body">
+      <div class="news-cat">Qualidade da Água</div>
+      <h3>Novos parâmetros de potabilidade entram em vigor em 2026</h3>
+      <p>A Portaria GM/MS nº 888/2021 traz atualizações importantes nos padrões de qualidade da água para consumo humano.</p>
+      <div class="news-date">📅 12 de Outubro de 2026</div>
+    </div>
+  </div>
+
+  <!-- Notícia 2: Meio Ambiente -->
+  <div class="news-card reveal">
+    <div class="news-img teal">🌿</div>
+    <div class="news-body">
+      <div class="news-cat">Meio Ambiente</div>
+      <h3>Preservação de nascentes é essencial para o abastecimento regional</h3>
+      <p>Especialistas alertam para a importância da proteção das áreas de recarga hídrica no Tocantins.</p>
+      <div class="news-date">📅 10 de Outubro de 2026</div>
+    </div>
+  </div>
+
+  <!-- Notícia 3: Sustentabilidade -->
+  <div class="news-card reveal">
+    <div class="news-img green">♻️</div>
+    <div class="news-body">
+      <div class="news-cat">Sustentabilidade</div>
+      <h3>Campanha de conscientização sobre uso racional da água em Paraíso do TO</h3>
+      <p>Prefeitura e parceiros promovem ações educativas para reduzir o desperdício de água no município.</p>
+      <div class="news-date">📅 05 de Outubro de 2026</div>
+    </div>
+  </div>
+
+</div>
       </div>
     </div>
   </div>
@@ -609,6 +640,9 @@
       <div class="team-card">
         <div class="avatar">👩‍🔬</div>
         <h4>Equipe Técnica</h4>
+        <div class="card" onclick="openModal('modal-tecnica')" style="cursor: pointer;">
+  <!-- Seu conteúdo atual da Equipe Técnica -->
+</div>
         <p>Responsável pelo monitoramento e análise dos PCQs</p>
       </div>
       <div class="team-card">
@@ -670,5 +704,42 @@
   </div>
 </footer>
   <script src="script.js"></script>
+  <!-- MODAL GALERIA EQUIPE TÉCNICA -->
+<div id="modal-tecnica" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('modal-tecnica')">&times;</span>
+    <h2>Equipe Técnica</h2>
+    <p>Atividades de campo, coletas e análises laboratoriais em Paraíso do Tocantins.</p>
+    
+    <div class="gallery-grid">
+      <!-- Foto Principal do Grupo -->
+      <div class="gallery-item main-photo">
+        <img src="img/equipe-grupo.jpeg" alt="Equipe Técnica no campo">
+        <span>Equipe de campo e monitoramento</span>
+      </div>
+
+      <!-- Outras Fotos das Atividades -->
+      <div class="gallery-item">
+        <img src="img/equipe-lab-1.jpeg" alt="Análise em laboratório">
+        <span>Análise no laboratório</span>
+      </div>
+
+      <div class="gallery-item">
+        <img src="img/equipe-lab-2.jpeg" alt="Medição de parâmetros">
+        <span>Preparo e medição de amostras</span>
+      </div>
+
+      <div class="gallery-item">
+        <img src="img/equipe-campo-1.jpeg" alt="Coleta de água">
+        <span>Coleta de amostra em ponto residencial</span>
+      </div>
+
+      <div class="gallery-item">
+        <img src="img/equipe-campo-2.jpeg" alt="Coleta de campo">
+        <span>Coleta de água em torneira</span>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

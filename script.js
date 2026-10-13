@@ -660,6 +660,33 @@ function verificarQualidade(data) {
 function updatePCQ(point) {
 
   const data = pcqData[point];
+  
+const pcqImage = document.getElementById("pcqImage");
+
+const imagensPCQ = {
+  P1: "img/P1 - Paraiso do Ipes.jpeg",
+  P2: "img/P2 - Area verde.jpeg",
+  P3: "img/P3 - Setor Bueno.jpeg",
+  P4: "img/P4 - Setor Marista.jpeg",
+  P5: "img/P5 - NOVA FRONTEIRA.jpeg",
+  P6: "img/P6 - JARDIM AMERICA.jpeg",
+  P7: "img/P7 - PARQUE DAS AGUAS.jpeg",
+  P8: "img/P8- Bela Vista.jpg.jpeg.jpeg",
+  P9: "img/P9 - Residencial Serra Verde.jpeg",
+  P10: "img/P10 - Jardim Limeira.jpeg",
+  P11: "img/P11 - Parque dos Buritis.jpeg",
+  P12: "img/P12 - Universitario.jpeg",
+  P13: "img/P13 - Serrano 1.jpg.jpeg",
+  P14: "img/P14 - Novo Jardim Paulista.jpg.jpeg",
+  P15: "img/P15 - Centro.jpg.jpeg",
+  P16: "img/P16 - Setor Oeste.jpg.jpeg"
+};
+
+if (pcqImage && imagensPCQ[point]) {
+  pcqImage.src = imagensPCQ[point];
+  pcqImage.alt = `Foto do local ${point}`;
+}
+
 
   if (!data) return;
 
@@ -827,3 +854,60 @@ updatePCQ("P1");
       navUser.innerHTML = `<a href="login.html" class="btn-login">Entrar</a>`;
     }
   }
+
+  
+function atualizarResumoInicial() {
+  const pontos = Object.values(pcqData);
+  const mes = "setembro";
+
+  function calcularMedia(parametro) {
+    const valores = pontos
+      .map(ponto => {
+        const valor = ponto[mes]?.[parametro];
+
+        if (valor === undefined || valor === null || String(valor).trim() === "") {
+          return NaN;
+        }
+
+        return Number(String(valor).replace(",", "."));
+      })
+      .filter(valor => Number.isFinite(valor));
+
+    if (!valores.length) return "—";
+
+    const media = valores.reduce((soma, valor) => soma + valor, 0) / valores.length;
+
+    return media.toLocaleString("pt-BR", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+  }
+
+  document.getElementById("homePh").textContent = calcularMedia("ph");
+  document.getElementById("homeTurbidity").textContent = calcularMedia("turbidez");
+  document.getElementById("homeChlorine").textContent = calcularMedia("cloro");
+  document.getElementById("homeFluoride").textContent = calcularMedia("fluoreto");
+  document.getElementById("homeLastUpdate").textContent = "Setembro/2026";
+}
+
+atualizarResumoInicial();
+
+function openModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = 'flex';
+  }
+}
+
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) {
+    modal.style.display = 'none';
+  }
+}
+
+window.onclick = function(event) {
+  if (event.target.classList.contains('modal')) {
+    event.target.style.display = 'none';
+  }
+};
