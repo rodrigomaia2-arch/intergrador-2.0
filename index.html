@@ -23,7 +23,6 @@
     <a href="#inicio" class="active">Início</a>
     <a href="#mapa">Mapa PCQs</a>
     <a href="#amostras">Amostras</a>
-    <a href="#tratamento">Tratamento</a>
     <a href="#noticias">Notícias</a>
     <a href="#sobre">Sobre nós</a>
     <a href="#dados" class="btn-nav">Ver Dados</a>
@@ -126,18 +125,43 @@
       <p class="section-sub">Clique em um ponto para ver os dados de qualidade da água coletados naquele local de Paraíso do Tocantins.</p>
     </div>
     <div class="map-layout reveal">
-      <div class="map-container" style="position:relative;">
-        <iframe
-          id="pcqMap"
-          src="https://maps.google.com/maps?q=-10.1769,-48.8801&z=13&output=embed"
-          style="width:100%;height:100%;border:none;display:block;"
-          title="Mapa de Paraíso do Tocantins"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen>
-        </iframe>
-        <div style="position:absolute;top:8px;left:8px;background:white;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;color:var(--blue-deep);box-shadow:0 2px 8px rgba(0,0,0,.15);">
-          📍 <span id="pcqMapLabel">Paraíso do Tocantins – TO</span>
+      <div class="map-main">
+        <div class="map-container" style="position:relative;">
+          <iframe
+            id="pcqMap"
+            src="https://maps.google.com/maps?q=-10.1769,-48.8801&z=13&output=embed"
+            style="width:100%;height:100%;border:none;display:block;"
+            title="Mapa de Paraíso do Tocantins"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+          <div style="position:absolute;top:8px;left:8px;background:white;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;color:var(--blue-deep);box-shadow:0 2px 8px rgba(0,0,0,.15);">
+            📍 <span id="pcqMapLabel">Paraíso do Tocantins – TO</span>
+          </div>
+        </div>
+        <div class="map-standards" id="dados">
+          <h3>📊 Padrões de Qualidade da Água</h3>
+          <p>Resultados do ponto selecionado comparados com os valores máximos permitidos pela Portaria GM/MS nº 888/2021.</p>
+          <div class="params-context">
+            <span id="paramsPoint">P1 · Paraíso dos Ipês</span>
+            <span id="paramsMonth">Junho/2026</span>
+            <span id="paramsQuality" class="quality-pill">A definir</span>
+          </div>
+          <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Parâmetro</th>
+            <th>Unidade</th>
+            <th>VMP (Máximo Permitido)</th>
+            <th>Resultado</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="paramsBody"></tbody>
+      </table>
+          </div>
         </div>
       </div>
       <div class="map-sidebar">
@@ -185,45 +209,6 @@
   </div>
 </div>
 
-  <div class="info-row">
-    <span class="k">Qualidade</span>
-    <span class="v" id="pcqQuality">A definir</span>
-  </div>
-
-  <div class="info-row">
-    <span class="k">pH</span>
-    <span class="v" id="pcqPh">A definir</span>
-  </div>
-
-  <div class="info-row">
-    <span class="k">Cor</span>
-    <span class="v" id="pcqColor">A definir</span>
-  </div>
-
-  <div class="info-row">
-    <span class="k">Turbidez</span>
-    <span class="v" id="pcqTurbidity">A definir</span>
-  </div>
-
-  <div class="info-row">
-    <span class="k">Fluoreto</span>
-    <span class="v" id="pcqFluoride">A definir</span>
-  </div>
-
-  <div class="info-row">
-    <span class="k">Cloro Livre</span>
-    <span class="v" id="pcqChlorine">A definir</span>
-  </div>
-
-  <div class="info-row">
-    <span class="k">Coliformes totais</span>
-    <span class="v" id="pcqTotalColiforms">A definir</span>
-  </div>
-
-  <div class="info-row">
-    <span class="k">Coliformes termotolerantes</span>
-    <span class="v" id="pcqThermotolerantColiforms">A definir</span>
-  </div>
 </div>
 
 <div class="pcq-list">
@@ -380,177 +365,72 @@
       <div class="reveal">
         <span class="section-tag">💧 Origem</span>
         <h2 class="section-title">De onde vem a água de Paraíso do Tocantins?</h2>
-        <p class="section-sub">A água consumida pelos moradores percorre um longo caminho antes de chegar às torneiras. Entenda esse processo.</p>
+        <p class="section-sub">Do Rio do Coco até a torneira: conheça o caminho que a água percorre e os mananciais que abastecem a cidade.</p>
         <div class="origin-steps">
           <div class="origin-step">
             <div class="step-num">1</div>
             <div class="step-body">
-              <h4>Captação</h4>
-              <p>A principal fonte é a Barragem do Coco, no Rio Coco, responsável por cerca de 88% do abastecimento. Poços perfurados na área urbana complementam a captação.</p>
+              <h4>Manancial: o Rio do Coco</h4>
+              <p>O principal manancial da cidade é o Rio do Coco, afluente da margem direita do Rio Araguaia. Suas nascentes ficam na Serra do Estrondo e sua bacia ocupa cerca de 6.670 km², passando por oito municípios, entre eles Paraíso.</p>
             </div>
           </div>
           <div class="origin-step">
             <div class="step-num">2</div>
             <div class="step-body">
-              <h4>Tratamento</h4>
-              <p>Na Estação de Tratamento de Água (ETA), operada pela concessionária BRK Ambiental, a água passa por diversas etapas para se tornar segura para consumo humano.</p>
+              <h4>Captação</h4>
+              <p>A água bruta é retirada da <strong>Barragem do Coco</strong>, responsável por cerca de 88% do abastecimento, com apoio de uma captação flutuante usada nos períodos críticos. O <strong>Córrego Pernada</strong> complementa a vazão, e poços tubulares profundos entram em operação na estiagem.</p>
             </div>
           </div>
           <div class="origin-step">
             <div class="step-num">3</div>
             <div class="step-body">
-              <h4>Distribuição</h4>
-              <p>Após o tratamento, a água é armazenada em reservatórios e distribuída pela rede de abastecimento municipal.</p>
+              <h4>Tratamento na ETA 001</h4>
+              <p>Na Estação de Tratamento de Água, operada pela BRK Ambiental, a água passa por um tratamento convencional:</p>
+              <ul class="origin-chips">
+                <li>Coagulação</li><li>Floculação</li><li>Decantação</li><li>Filtração</li><li>Desinfecção</li><li>Fluoretação</li>
+              </ul>
             </div>
           </div>
           <div class="origin-step">
             <div class="step-num">4</div>
             <div class="step-body">
+              <h4>Reservação e distribuição</h4>
+              <p>A água tratada é armazenada em reservatórios com capacidade de cerca de 3.100 m³ e segue pela rede de distribuição até as casas. Segundo o SNIS (2022), cerca de 97% da população tem acesso à rede de água.</p>
+            </div>
+          </div>
+          <div class="origin-step">
+            <div class="step-num">5</div>
+            <div class="step-body">
               <h4>Monitoramento (PCQ)</h4>
-              <p>Os 16 Pontos de Coleta de Qualidade verificam continuamente se a água mantém os padrões de potabilidade.</p>
+              <p>Os 16 Pontos de Coleta de Qualidade espalhados pelos setores verificam se a água que chega às torneiras mantém os padrões de potabilidade da Portaria GM/MS nº 888/2021.</p>
             </div>
           </div>
         </div>
       </div>
-      <figure class="origin-visual reveal">
-        <img src="img/origem/barragem-do-coco.webp" alt="Barragem do Coco, principal manancial de Paraíso do Tocantins, com nível baixo durante a estiagem" loading="lazy">
-        <figcaption>
-          <strong>Barragem do Coco</strong>
-          <span>Principal manancial de Paraíso do Tocantins · Foto: Jornal Opção</span>
-        </figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ── TREATMENT SECTION ── -->
-<section class="treatment-section" id="tratamento">
-  <div class="section-inner">
-    <div class="reveal">
-      <span class="section-tag">⚗️ Processo</span>
-      <h2 class="section-title">Como a água é tratada?</h2>
-      <p class="section-sub">A Estação de Tratamento de Água realiza 6 etapas essenciais para garantir que a água chegue com qualidade às residências.</p>
-    </div>
-    <div class="flow-steps reveal">
-      <div class="flow-step">
-        <div class="flow-icon">🪣</div>
-        <h4>Captação</h4>
-        <p>Retirada da água bruta do manancial</p>
-      </div>
-      <div class="flow-step">
-        <div class="flow-icon">🧪</div>
-        <h4>Coagulação</h4>
-        <p>Adição de produtos químicos</p>
-      </div>
-      <div class="flow-step">
-        <div class="flow-icon">🌀</div>
-        <h4>Floculação</h4>
-        <p>Aglomeração de partículas</p>
-      </div>
-      <div class="flow-step">
-        <div class="flow-icon">🏊</div>
-        <h4>Decantação</h4>
-        <p>Separação do lodo</p>
-      </div>
-      <div class="flow-step">
-        <div class="flow-icon">🪨</div>
-        <h4>Filtração</h4>
-        <p>Remoção de impurezas restantes</p>
-      </div>
-      <div class="flow-step">
-        <div class="flow-icon">✅</div>
-        <h4>Desinfecção</h4>
-        <p>Cloração e fluoretação</p>
+      <div class="origin-aside reveal">
+        <figure class="origin-visual">
+          <img src="img/origem/barragem-do-coco.webp" alt="Barragem do Coco, principal manancial de Paraíso do Tocantins, com nível baixo durante a estiagem" loading="lazy">
+          <figcaption>
+            <strong>Barragem do Coco</strong>
+            <span>Principal manancial de Paraíso do Tocantins · Foto: Jornal Opção</span>
+          </figcaption>
+        </figure>
+        <div class="origin-facts">
+          <div class="origin-fact"><strong>~88%</strong><span>da água vem da Barragem do Coco</span></div>
+          <div class="origin-fact"><strong>6.670 km²</strong><span>área da bacia do Rio do Coco</span></div>
+          <div class="origin-fact"><strong>~9.700 m³</strong><span>de água produzidos por dia</span></div>
+          <div class="origin-fact"><strong>96,7%</strong><span>da população atendida com água</span></div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ── PARAMETERS TABLE ── -->
-<section id="dados">
-  <div class="section-inner">
-    <div class="reveal">
-      <span class="section-tag">📊 Parâmetros</span>
-      <h2 class="section-title">Padrões de Qualidade da Água</h2>
-      <p class="section-sub">Tabela com os principais parâmetros monitorados e os valores máximos permitidos pela legislação brasileira (Portaria GM/MS nº 888/2021).</p>
+    <div class="origin-alert reveal">
+      <h4>⚠️ Por que o abastecimento é vulnerável?</h4>
+      <p>A BRK Ambiental já apontava, em relatório de 2019, que as matas ciliares do Rio do Coco estão ameaçadas pela atividade agropecuária e que o manancial fica eutrofizado entre agosto e setembro, com floração de algas. A vazão do Córrego Pernada também cai em setembro e outubro.</p>
+      <p>Em 2026, a estiagem prolongada levou a Barragem do Coco ao <strong>volume morto</strong> em setembro. A cidade passou a ter rodízio de água a partir de 11 de outubro e a prefeitura decretou situação de emergência por 180 dias. Como medidas emergenciais, a BRK ativou poços extras, fez captação complementar no Córrego da Cachorra e na Barragem Pernada e passou a transportar água bruta do Parque das Águas até a ETA.</p>
     </div>
-    <div class="table-wrapper reveal">
-      <table>
-        <thead>
-          <tr>
-            <th>Parâmetro</th>
-            <th>Unidade</th>
-            <th>VMP (Máximo Permitido)</th>
-            <th>Último Resultado</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-  <!-- pH -->
-  <tr>
-    <td>pH</td>
-    <td>—</td>
-    <td>6,0 – 9,5</td>
-    <td>7,44</td>
-    <td>Conforme</td>
-  </tr>
 
-  <!-- Turbidez -->
-  <tr>
-    <td>Turbidez</td>
-    <td>NTU</td>
-    <td>&le; 5</td>
-    <td>1,96</td>
-    <td>Conforme</td>
-  </tr>
-
-  <!-- Cloro Residual Livre -->
-  <tr>
-    <td>Cloro Residual Livre</td>
-    <td>mg/L</td>
-    <td>0,2 – 5,0</td>
-    <td>0,47</td>
-    <td>Conforme</td>
-  </tr>
-
-  <!-- Fluoreto -->
-  <tr>
-    <td>Fluoreto</td>
-    <td>mg/L</td>
-    <td>&le; 1,5</td>
-    <td>0,39</td>
-    <td>Conforme</td>
-  </tr>
-
-  <!-- Coliformes Totais -->
-  <tr>
-    <td>Coliformes Totais</td>
-    <td>UFC/100mL</td>
-    <td>Ausência</td>
-    <td>Presença parcial</td>
-    <td>Atenção</td>
-  </tr>
-
-  <!-- E. coli -->
-  <tr>
-    <td>E. coli</td>
-    <td>UFC/100mL</td>
-    <td>Ausência</td>
-    <td>Ausente</td>
-    <td>Conforme</td>
-  </tr>
-
-  <!-- Cor Aparente -->
-  <tr>
-    <td>Cor Aparente</td>
-    <td>uH</td>
-    <td>&le; 15</td>
-    <td>0,0</td>
-    <td>Conforme</td>
-  </tr>
-</tbody>
-      </table>
-    </div>
+    <p class="origin-sources">Fontes: Relatório Anual de Qualidade da Água – BRK Ambiental, Paraíso do Tocantins (2019); SNIS 2022, via Instituto Água e Saneamento; estudo de uso da terra na bacia do Rio do Coco (ResearchGate); Conexão Tocantins; Jornal Opção; Gazeta do Cerrado; Jornal do Tocantins (2026).</p>
   </div>
 </section>
 
@@ -699,7 +579,6 @@
       <a href="#mapa">Mapa dos PCQs</a>
       <a href="#amostras">Fotos das Amostras</a>
       <a href="#origem">Origem da Água</a>
-      <a href="#tratamento">Tratamento</a>
       <a href="#dados">Dados</a>
     </div>
     <div class="footer-col">

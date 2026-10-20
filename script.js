@@ -702,6 +702,72 @@ function mostrarNoMapa(point, data) {
   if (label) label.textContent = `${point} · ${data.bairro}`;
 }
 
+// Parâmetros da tabela "Padrões de Qualidade da Água"
+const numero = valor => parseFloat(String(valor).replace(",", "."));
+const ausente = valor => String(valor).trim().toLowerCase() === "ausente";
+
+const parametrosTabela = [
+  { nome: "pH", unidade: "—", vmp: "6,0 – 9,5", campo: "ph",
+    ok: v => numero(v) >= 6 && numero(v) <= 9.5 },
+  { nome: "Turbidez", unidade: "NTU", vmp: "≤ 5", campo: "turbidez",
+    ok: v => numero(v) <= 5 },
+  { nome: "Cloro Residual Livre", unidade: "mg/L", vmp: "0,2 – 5,0", campo: "cloro",
+    ok: v => numero(v) >= 0.2 && numero(v) <= 5 },
+  { nome: "Fluoreto", unidade: "mg/L", vmp: "≤ 1,5", campo: "fluoreto",
+    ok: v => numero(v) <= 1.5 },
+  { nome: "Coliformes Totais", unidade: "UFC/100mL", vmp: "Ausência", campo: "coliformesTotais",
+    ok: ausente, texto: v => ausente(v) ? "Ausente" : "Presente" },
+  { nome: "Coliformes Termotolerantes", unidade: "UFC/100mL", vmp: "Ausência", campo: "coliformesTermotolerantes",
+    ok: ausente, texto: v => ausente(v) ? "Ausente" : "Presente" },
+  { nome: "Cor Aparente", unidade: "uH", vmp: "≤ 15", campo: "cor",
+    ok: v => numero(v) <= 15 }
+];
+
+function atualizarTabelaParametros(point, data, mes) {
+  const corpo = document.getElementById("paramsBody");
+  if (!corpo) return;
+
+  corpo.innerHTML = "";
+
+  parametrosTabela.forEach(param => {
+    const valor = mes[param.campo];
+    const semDado = valor === undefined || String(valor).trim() === "";
+
+    let resultado = "A definir";
+    let status = "Sem dado";
+    let classe = "status-data";
+
+    if (!semDado) {
+      resultado = param.texto ? param.texto(valor) : valor;
+      const conforme = param.ok(valor);
+      status = conforme ? "Conforme" : "Atenção";
+      classe = conforme ? "status-ok" : "status-alert";
+    }
+
+    const linha = document.createElement("tr");
+    [param.nome, param.unidade, param.vmp, resultado].forEach(texto => {
+      const celula = document.createElement("td");
+      celula.textContent = texto;
+      linha.appendChild(celula);
+    });
+
+    const celulaStatus = document.createElement("td");
+    celulaStatus.textContent = status;
+    celulaStatus.className = classe;
+    linha.appendChild(celulaStatus);
+
+    corpo.appendChild(linha);
+  });
+
+  document.getElementById("paramsPoint").textContent = `${point} · ${data.bairro}`;
+  document.getElementById("paramsMonth").textContent = monthNames[currentMonth];
+
+  const qualidade = Object.keys(mes).length ? verificarQualidade(mes) : "Sem dados";
+  const pill = document.getElementById("paramsQuality");
+  pill.textContent = qualidade;
+  pill.classList.toggle("bad", qualidade === "Fora do padrão");
+}
+
 // Atualiza as informações do ponto
 function updatePCQ(point) {
 
@@ -720,9 +786,7 @@ if (pcqImage && imagensPCQ[point]) {
 
   mostrarNoMapa(point, data);
 
-  const mes = data[currentMonth];
-
-  if (!mes) return;
+  const mes = data[currentMonth] || {};
 
 
   document.getElementById("pcqTitle").textContent =
@@ -741,29 +805,7 @@ if (pcqImage && imagensPCQ[point]) {
     data.coordenadas;
 
 
-  document.getElementById("pcqQuality").textContent =
-    verificarQualidade(mes);
-
-  document.getElementById("pcqPh").textContent =
-    mes.ph;
-
-  document.getElementById("pcqColor").textContent =
-    mes.cor;
-
-  document.getElementById("pcqTurbidity").textContent =
-    `${mes.turbidez} NTU`;
-
-  document.getElementById("pcqFluoride").textContent =
-    mes.fluoreto ? `${mes.fluoreto} mg/L` : "A definir";
-
-  document.getElementById("pcqChlorine").textContent =
-    `${mes.cloro} mg/L`;
-
-  document.getElementById("pcqTotalColiforms").textContent =
-    mes.coliformesTotais;
-
-  document.getElementById("pcqThermotolerantColiforms").textContent =
-    mes.coliformesTermotolerantes;
+  atualizarTabelaParametros(point, data, mes);
 }
 
 
