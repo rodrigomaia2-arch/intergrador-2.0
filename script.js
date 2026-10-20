@@ -745,7 +745,7 @@ function atualizarTabelaParametros(point, data, mes) {
     }
 
     const linha = document.createElement("tr");
-    [param.nome, param.unidade, param.vmp, resultado].forEach(texto => {
+    [param.nome, resultado, param.unidade, param.vmp].forEach(texto => {
       const celula = document.createElement("td");
       celula.textContent = texto;
       linha.appendChild(celula);
