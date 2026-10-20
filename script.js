@@ -676,6 +676,32 @@ const imagensPCQ = {
   P16: "img/P16 - Setor Oeste.jpg.jpeg"
 };
 
+// Converte coordenadas no formato 10°11'48.13"S 48°54'32.24"W para decimal
+function dmsParaDecimal(coordenadas) {
+  const partes = [...coordenadas.matchAll(/(\d+)°(\d+)'([\d.]+)"([NSEW])/g)];
+  if (partes.length !== 2) return null;
+
+  const [lat, lng] = partes.map(([, graus, min, seg, dir]) => {
+    const valor = Number(graus) + Number(min) / 60 + Number(seg) / 3600;
+    return dir === "S" || dir === "W" ? -valor : valor;
+  });
+
+  return { lat, lng };
+}
+
+// Centraliza o mapa no ponto selecionado
+function mostrarNoMapa(point, data) {
+  const mapa = document.getElementById("pcqMap");
+  const pos = dmsParaDecimal(data.coordenadas);
+  if (!mapa || !pos) return;
+
+  const src = `https://maps.google.com/maps?q=${pos.lat.toFixed(6)},${pos.lng.toFixed(6)}&z=17&output=embed`;
+  if (mapa.src !== src) mapa.src = src;
+
+  const label = document.getElementById("pcqMapLabel");
+  if (label) label.textContent = `${point} · ${data.bairro}`;
+}
+
 // Atualiza as informações do ponto
 function updatePCQ(point) {
 
@@ -691,6 +717,8 @@ if (pcqImage && imagensPCQ[point]) {
 
 
   if (!data) return;
+
+  mostrarNoMapa(point, data);
 
   const mes = data[currentMonth];
 

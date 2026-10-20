@@ -128,6 +128,7 @@
     <div class="map-layout reveal">
       <div class="map-container" style="position:relative;">
         <iframe
+          id="pcqMap"
           src="https://maps.google.com/maps?q=-10.1769,-48.8801&z=13&output=embed"
           style="width:100%;height:100%;border:none;display:block;"
           title="Mapa de Paraíso do Tocantins"
@@ -136,7 +137,7 @@
           allowfullscreen>
         </iframe>
         <div style="position:absolute;top:8px;left:8px;background:white;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;color:var(--blue-deep);box-shadow:0 2px 8px rgba(0,0,0,.15);">
-          📍 Paraíso do Tocantins – TO
+          📍 <span id="pcqMapLabel">Paraíso do Tocantins – TO</span>
         </div>
       </div>
       <div class="map-sidebar">
@@ -385,14 +386,14 @@
             <div class="step-num">1</div>
             <div class="step-body">
               <h4>Captação</h4>
-              <p>A água é captada de mananciais naturais — rios, nascentes ou reservatórios — na região de Paraíso do Tocantins.</p>
+              <p>A principal fonte é a Barragem do Coco, no Rio Coco, responsável por cerca de 88% do abastecimento. Poços perfurados na área urbana complementam a captação.</p>
             </div>
           </div>
           <div class="origin-step">
             <div class="step-num">2</div>
             <div class="step-body">
               <h4>Tratamento</h4>
-              <p>Na Estação de Tratamento de Água (ETA), passa por diversas etapas para se tornar segura para consumo humano.</p>
+              <p>Na Estação de Tratamento de Água (ETA), operada pela concessionária BRK Ambiental, a água passa por diversas etapas para se tornar segura para consumo humano.</p>
             </div>
           </div>
           <div class="origin-step">
@@ -411,9 +412,13 @@
           </div>
         </div>
       </div>
-      <div class="origin-visual reveal">
-        <div class="origin-icon">🌊</div>
-      </div>
+      <figure class="origin-visual reveal">
+        <img src="img/origem/barragem-do-coco.webp" alt="Barragem do Coco, principal manancial de Paraíso do Tocantins, com nível baixo durante a estiagem" loading="lazy">
+        <figcaption>
+          <strong>Barragem do Coco</strong>
+          <span>Principal manancial de Paraíso do Tocantins · Foto: Jornal Opção</span>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -602,38 +607,38 @@
     </div>
 <div class="news-grid">
   
-  <!-- Notícia 1: Qualidade da Água -->
-  <div class="news-card reveal">
-    <div class="news-img blue">💧</div>
+  <!-- Notícia 1: Torneira solidária (g1 Tocantins) -->
+  <a class="news-card reveal" href="https://g1.globo.com/to/tocantins/noticia/2026/10/20/agua-oferecida-por-morador-em-torneira-solidaria-durante-crise-hidrica-no-interior-do-to-e-retirada-de-cisterna-video.ghtml" target="_blank" rel="noopener">
+    <div class="news-img"><img src="img/noticias/torneira-solidaria.jpg" alt="Torneira instalada no muro de uma casa com placa &quot;Pode pegar água aqui&quot; e baldes embaixo" loading="lazy"></div>
     <div class="news-body">
-      <div class="news-cat">Qualidade da Água</div>
-      <h3>Novos parâmetros de potabilidade entram em vigor em 2026</h3>
-      <p>A Portaria GM/MS nº 888/2021 traz atualizações importantes nos padrões de qualidade da água para consumo humano.</p>
-      <div class="news-date">📅 12 de Outubro de 2026</div>
+      <div class="news-cat">Crise Hídrica · g1 Tocantins</div>
+      <h3>Água oferecida por morador em torneira "solidária" durante crise hídrica no interior do TO é retirada de cisterna</h3>
+      <p>Em Paraíso do Tocantins, um servidor instalou uma torneira no muro de casa para doar água aos vizinhos durante o desabastecimento.</p>
+      <div class="news-date">📅 20 de Outubro de 2026</div>
     </div>
-  </div>
+  </a>
 
-  <!-- Notícia 2: Meio Ambiente -->
-  <div class="news-card reveal">
-    <div class="news-img teal">🌿</div>
+  <!-- Notícia 2: Decisão judicial (Agência Tocantins) -->
+  <a class="news-card reveal" href="https://www.agenciatocantins.com.br/noticia/111839/justica-determina-que-brk-forneca-agua-emergencial-a-populacao-de-paraiso-do-tocantins" target="_blank" rel="noopener">
+    <div class="news-img"><img src="img/noticias/brk-procon.webp" alt="Fiscal do Procon em frente à unidade da BRK Ambiental em Paraíso do Tocantins" loading="lazy"></div>
     <div class="news-body">
-      <div class="news-cat">Meio Ambiente</div>
-      <h3>Preservação de nascentes é essencial para o abastecimento regional</h3>
-      <p>Especialistas alertam para a importância da proteção das áreas de recarga hídrica no Tocantins.</p>
-      <div class="news-date">📅 10 de Outubro de 2026</div>
+      <div class="news-cat">Abastecimento · Agência Tocantins</div>
+      <h3>Justiça determina que BRK forneça água emergencial à população de Paraíso do Tocantins</h3>
+      <p>Liminar obtida pelo MPTO dá 12 horas para atender unidades essenciais e 24 horas para a população afetada, sem custos.</p>
+      <div class="news-date">📅 19 de Outubro de 2026</div>
     </div>
-  </div>
+  </a>
 
-  <!-- Notícia 3: Sustentabilidade -->
-  <div class="news-card reveal">
-    <div class="news-img green">♻️</div>
+  <!-- Notícia 3: Situação de emergência (Jornal Opção) -->
+  <a class="news-card reveal" href="https://tocantins.jornalopcao.com.br/noticias/em-meio-a-crise-sem-agua-paraiso-decreta-emergencia-por-180-dias-e-cobra-suspensao-de-tarifas-da-brk-entenda-o-caso-602749/" target="_blank" rel="noopener">
+    <div class="news-img"><img src="img/noticias/barragem-emergencia.webp" alt="Leito seco e rachado de represa em Paraíso do Tocantins" loading="lazy"></div>
     <div class="news-body">
-      <div class="news-cat">Sustentabilidade</div>
-      <h3>Campanha de conscientização sobre uso racional da água em Paraíso do TO</h3>
-      <p>Prefeitura e parceiros promovem ações educativas para reduzir o desperdício de água no município.</p>
-      <div class="news-date">📅 05 de Outubro de 2026</div>
+      <div class="news-cat">Meio Ambiente · Jornal Opção</div>
+      <h3>Paraíso decreta emergência por 180 dias em meio à crise sem água</h3>
+      <p>Com a estiagem, a Barragem do Coco, principal manancial da cidade, opera em volume morto. A prefeitura cobra a suspensão das tarifas da BRK.</p>
+      <div class="news-date">📅 19 de Outubro de 2026</div>
     </div>
-  </div>
+  </a>
 
 </div>
       </div>
