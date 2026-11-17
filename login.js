@@ -1,3 +1,19 @@
+// ============================================================
+// YPORÃ · SCRIPT DA PÁGINA DE LOGIN (login.js)
+// Índice:
+//    1. Configurações e elementos da página
+//    2. Usuários salvos no navegador (localStorage)
+//    3. Mensagens de erro/sucesso e troca Entrar ↔ Cadastrar
+//    4. Interações do formulário (email, mostrar senha, esqueci a senha)
+//    5. Entrar (login)
+//    6. Cadastrar nova conta
+// Atenção: os dados ficam só no navegador; não é um login seguro de servidor.
+// ============================================================
+
+// ============================================================
+// 1. CONFIGURAÇÕES E ELEMENTOS DA PÁGINA
+// Conta de administrador e referências aos elementos do HTML.
+// ============================================================
 const ADMIN_EMAIL = 'admin@ypora.com';
 const ADMIN_PASSWORD = 'admin123';
 
@@ -14,6 +30,10 @@ const authSub = document.getElementById('authSub');
 
 const USERS_KEY = 'ypora_users';
 
+// ============================================================
+// 2. USUÁRIOS SALVOS NO NAVEGADOR
+// Ler, salvar e procurar usuários no localStorage; validar email.
+// ============================================================
 function getUsers() {
   try {
     return JSON.parse(localStorage.getItem(USERS_KEY)) || [];
@@ -34,6 +54,10 @@ function isValidEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
+// ============================================================
+// 3. MENSAGENS E TROCA ENTRAR ↔ CADASTRAR
+// Mostrar/esconder erro e sucesso; alternar entre os dois formulários.
+// ============================================================
 function showError(message) {
   errorBox.textContent = '⚠️ ' + message;
   errorBox.classList.add('visible');
@@ -78,6 +102,10 @@ document.getElementById('showLogin').addEventListener('click', (e) => {
   showMode('login');
 });
 
+// ============================================================
+// 4. INTERAÇÕES DO FORMULÁRIO
+// Selo de conta ao digitar o email, botão mostrar senha e "esqueci a senha".
+// ============================================================
 emailInput.addEventListener('input', () => {
   const value = emailInput.value.trim().toLowerCase();
   if (!value) {
@@ -117,6 +145,11 @@ forgotLink.addEventListener('click', (e) => {
   }, 2500);
 });
 
+// ============================================================
+// 5. ENTRAR (LOGIN)
+// Confere email e senha, salva a sessão e redireciona:
+// admin → dashboard-admin.html (ATENÇÃO: esse arquivo ainda não existe) · demais → index.html
+// ============================================================
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   hideError();
@@ -155,6 +188,10 @@ form.addEventListener('submit', (e) => {
   window.location.href = session.role === 'admin' ? 'dashboard-admin.html' : 'index.html';
 });
 
+// ============================================================
+// 6. CADASTRAR NOVA CONTA
+// Valida os campos, salva o novo usuário e já faz o login.
+// ============================================================
 signupForm.addEventListener('submit', (e) => {
   e.preventDefault();
   hideError();
