@@ -1,19 +1,3 @@
-// ============================================================
-// YPORÃ · SCRIPT DA PÁGINA PRINCIPAL (script.js)
-// Índice:
-//    1. Navegação e animações         8. Seletor de mês
-//    2. Dados dos pontos (pcqData)    9. Inicialização
-//    3. Meses e qualidade da água    10. Menu ativo e sessão (login)
-//    4. Fotos e mapa                 11. Resumo da página inicial
-//    5. Tabela de padrões            12. Modais (janelas)
-//    6. Painel do ponto selecionado  13. Galeria de amostras
-//    7. Lista de pontos e contadores
-// ============================================================
-
-// ============================================================
-// 1. NAVEGAÇÃO E ANIMAÇÕES
-// Rolagem suave dos links do menu, sombra do cabeçalho e animação .reveal.
-// ============================================================
 // Smooth scroll for ALL anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -44,18 +28,10 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-// ============================================================
-// 2. DADOS DOS PONTOS DE COLETA (pcqData)
-// Cada ponto (P1, P2...) tem: foto, bairro, tipo, endereço, coordenadas
-// e os resultados de cada mês (junho, agosto, setembro).
-// ============================================================
 // Dados dos pontos de coleta
-// Para adicionar um ponto, basta incluir um novo bloco (P17, P18...) aqui:
-// a lista, os contadores, a galeria de amostras e o mapa se atualizam sozinhos.
 const pcqData = {
 
   P1: {
-    foto: "img/P1 - Paraiso do Ipes.jpeg",
     bairro: "Paraíso dos Ipês",
     tipo: "Residencial",
     endereco: "Rua 21, n. 201",
@@ -93,7 +69,6 @@ const pcqData = {
   },
 
   P2: {
-    foto: "img/P2 - Area verde.jpeg",
     bairro: "Área Verde",
     tipo: "Residencial",
     endereco: "Rua 02, n. 106",
@@ -131,7 +106,6 @@ const pcqData = {
   },
 
   P3: {
-    foto: "img/P3 - Setor Bueno.jpeg",
     bairro: "Setor Bueno",
     tipo: "Comercial",
     endereco: "Rua 06, Qd. 01, Lt. 39",
@@ -169,7 +143,6 @@ const pcqData = {
   },
 
   P4: {
-    foto: "img/P4 - Setor Marista.jpeg",
     bairro: "Setor Marista",
     tipo: "Residencial",
     endereco: "Rua José Ferreira Borges, prox. ao complexo poliesportivo",
@@ -207,7 +180,6 @@ const pcqData = {
   },
 
   P5: {
-    foto: "img/P5 - NOVA FRONTEIRA.jpeg",
     bairro: "Nova Fronteira",
     tipo: "Comercial",
     endereco: "Rua 06, Qd. 23, Lt. 44 (Borracharia do Galo)",
@@ -245,7 +217,6 @@ const pcqData = {
   },
 
   P6: {
-    foto: "img/P6 - JARDIM AMERICA.jpeg",
     bairro: "Jardim América",
     tipo: "Residencial",
     endereco: "Rua 13, n. 1760, Qd. 52, Lt. 03",
@@ -283,7 +254,6 @@ const pcqData = {
   },
 
   P7: {
-    foto: "img/P7 - PARQUE DAS AGUAS.jpeg",
     bairro: "Parque das Águas",
     tipo: "Comercial",
     endereco: "Av. Beira Lago, Parque das Águas",
@@ -321,7 +291,6 @@ const pcqData = {
   },
 
   P8: {
-    foto: "img/P8- Bela Vista.jpg.jpeg.jpeg",
     bairro: "Setor Bela Vista",
     tipo: "Residencial",
     endereco: "Rua Barão do Rio Branco, n. 1003",
@@ -359,7 +328,6 @@ const pcqData = {
   },
 
   P9: {
-    foto: "img/P9 - Residencial Serra Verde.jpeg",
     bairro: "Residencial Serra Verde",
     tipo: "Residencial",
     endereco: "A definir",
@@ -397,7 +365,6 @@ const pcqData = {
   },
 
   P10: {
-    foto: "img/P10 - Jardim Limeira.jpeg",
     bairro: "Jardim Limeira",
     tipo: "Residencial",
     endereco: "Rua 25B, Qd. 31, Lt. 37",
@@ -435,7 +402,6 @@ const pcqData = {
   },
 
   P11: {
-    foto: "img/P11 - Parque dos Buritis.jpeg",
     bairro: "Parque dos Buritis",
     tipo: "Residencial",
     endereco: "Rua 10 (Casa de esquina com a Assembleia de Deus)",
@@ -473,7 +439,6 @@ const pcqData = {
   },
 
   P12: {
-    foto: "img/P12 - Universitario.jpeg",
     bairro: "Setor Universitário",
     tipo: "Comercial",
     endereco: "Avenida Paraíso",
@@ -511,7 +476,6 @@ const pcqData = {
   },
 
   P13: {
-    foto: "img/P13 - Serrano 1.jpg.jpeg",
     bairro: "Serrano I",
     tipo: "Residencial",
     endereco: "Rua Hugo de Carvalho Ramos, n. 225",
@@ -549,7 +513,6 @@ const pcqData = {
   },
 
   P14: {
-    foto: "img/P14 - Novo Jardim Paulista.jpg.jpeg",
     bairro: "Novo Jardim Paulista",
     tipo: "Residencial",
     endereco: "Rua 07, Qd. 39, S/N",
@@ -587,7 +550,6 @@ const pcqData = {
   },
 
   P15: {
-    foto: "img/P15 - Centro.jpg.jpeg",
     bairro: "Centro",
     tipo: "Comercial",
     endereco: "Rua Tupinambás, n. 603 (Em frente a Pedal Ciclo)",
@@ -625,7 +587,6 @@ const pcqData = {
   },
 
   P16: {
-    foto: "img/P16 - Setor Oeste.jpg.jpeg",
     bairro: "Oeste",
     tipo: "Comercial",
     endereco: "Bernardinho Maciel (próx. ao Supermercado econômico)",
@@ -757,10 +718,6 @@ P29: {
 
 
 
-// ============================================================
-// 3. MESES E VERIFICAÇÃO DA QUALIDADE
-// Mês escolhido, nomes dos meses e a regra que diz se a água é potável.
-// ============================================================
 // Mês selecionado
 let currentMonth = "junho";
 
@@ -780,8 +737,7 @@ function verificarQualidade(data) {
 
   const phOk = ph >= 6.0 && ph <= 9.5;
   const cloroOk = cloro >= 0.2 && cloro <= 5;
-  // Fluoreto sem resultado não reprova a amostra (fica "Sem dado" na tabela)
-  const fluoretoOk = isNaN(fluoreto) || fluoreto <= 1.5;
+  const fluoretoOk = !isNaN(fluoreto) && fluoreto <= 1.5;
 
   const coliformesOk =
     String(data.coliformesTotais).toLowerCase() === "ausente" &&
@@ -793,16 +749,25 @@ function verificarQualidade(data) {
 }
 
 
-// ============================================================
-// 4. FOTOS E MAPA
-// Lista de fotos, conversão de coordenadas e atualização do mapa do Google.
-// ============================================================
-// Fotos de cada ponto (campo "foto" em pcqData)
-const imagensPCQ = Object.fromEntries(
-  Object.entries(pcqData)
-    .filter(([, ponto]) => ponto.foto)
-    .map(([codigo, ponto]) => [codigo, ponto.foto])
-);
+// Fotos da água coletada em cada ponto
+const imagensPCQ = {
+  P1: "img/P1 - Paraiso do Ipes.jpeg",
+  P2: "img/P2 - Area verde.jpeg",
+  P3: "img/P3 - Setor Bueno.jpeg",
+  P4: "img/P4 - Setor Marista.jpeg",
+  P5: "img/P5 - NOVA FRONTEIRA.jpeg",
+  P6: "img/P6 - JARDIM AMERICA.jpeg",
+  P7: "img/P7 - PARQUE DAS AGUAS.jpeg",
+  P8: "img/P8- Bela Vista.jpg.jpeg.jpeg",
+  P9: "img/P9 - Residencial Serra Verde.jpeg",
+  P10: "img/P10 - Jardim Limeira.jpeg",
+  P11: "img/P11 - Parque dos Buritis.jpeg",
+  P12: "img/P12 - Universitario.jpeg",
+  P13: "img/P13 - Serrano 1.jpg.jpeg",
+  P14: "img/P14 - Novo Jardim Paulista.jpg.jpeg",
+  P15: "img/P15 - Centro.jpg.jpeg",
+  P16: "img/P16 - Setor Oeste.jpg.jpeg"
+};
 
 // Converte coordenadas no formato 10°11'48.13"S 48°54'32.24"W para decimal
 function dmsParaDecimal(coordenadas) {
@@ -830,10 +795,6 @@ function mostrarNoMapa(point, data) {
   if (label) label.textContent = `${point} · ${data.bairro}`;
 }
 
-// ============================================================
-// 5. TABELA DE PADRÕES
-// Limites da Portaria GM/MS nº 888/2021 e montagem das linhas da tabela.
-// ============================================================
 // Parâmetros da tabela "Padrões de Qualidade da Água"
 const numero = valor => parseFloat(String(valor).replace(",", "."));
 const ausente = valor => String(valor).trim().toLowerCase() === "ausente";
@@ -892,6 +853,7 @@ function atualizarTabelaParametros(point, data, mes) {
   });
 
   document.getElementById("paramsPoint").textContent = `${point} · ${data.bairro}`;
+  document.getElementById("paramsMonth").textContent = monthNames[currentMonth];
 
   const qualidade = Object.keys(mes).length ? verificarQualidade(mes) : "Sem dados";
   const pill = document.getElementById("paramsQuality");
@@ -899,10 +861,6 @@ function atualizarTabelaParametros(point, data, mes) {
   pill.classList.toggle("bad", qualidade === "Fora do padrão");
 }
 
-// ============================================================
-// 6. PAINEL DO PONTO SELECIONADO
-// updatePCQ() atualiza painel, foto, mapa e tabela ao trocar de ponto ou mês.
-// ============================================================
 // Atualiza as informações do ponto
 function updatePCQ(point) {
 
@@ -963,45 +921,6 @@ if (pcqImage) {
 }
 
 
-// ============================================================
-// 7. LISTA DE PONTOS E CONTADORES
-// Cria os cards da lista, as cores de status, os totais de PCQs
-// e o clique em cada ponto.
-// ============================================================
-// Monta a lista de pontos e os contadores a partir de pcqData
-const totalPCQs = Object.keys(pcqData).length;
-
-document.querySelectorAll("[data-pcq-total]").forEach(el => {
-  el.textContent = totalPCQs;
-});
-
-// Mês mais recente com dados de um ponto
-function ultimoMesComDados(ponto) {
-  return Object.keys(monthNames).reverse().find(mes => ponto[mes]);
-}
-
-const pcqList = document.getElementById("pcqList");
-
-if (pcqList) {
-  Object.entries(pcqData).forEach(([codigo, ponto], index) => {
-    const mes = ultimoMesComDados(ponto);
-    let status = "ok";
-    if (mes) status = verificarQualidade(ponto[mes]) === "Potável" ? "good" : "warn";
-
-    const card = document.createElement("div");
-    card.className = index === 0 ? "pcq-card active" : "pcq-card";
-    card.innerHTML = `
-      <div>
-        <div class="pcq-id">${codigo}</div>
-        <div class="pcq-detail">${ponto.bairro}</div>
-      </div>
-      <div class="pcq-status ${status}"></div>
-    `;
-    pcqList.appendChild(card);
-  });
-}
-
-
 // Selecionar ponto P1, P2, P3...
 document.querySelectorAll(".pcq-card").forEach(card => {
 
@@ -1021,10 +940,6 @@ document.querySelectorAll(".pcq-card").forEach(card => {
 });
 
 
-// ============================================================
-// 8. SELETOR DE MÊS
-// Abre/fecha o menu "Mês da análise" e atualiza a tabela ao escolher.
-// ============================================================
 // Menu de meses
 const monthButton = document.getElementById("monthButton");
 const monthOptions = document.getElementById("monthOptions");
@@ -1049,7 +964,7 @@ if (monthButton && monthOptions) {
       currentMonth = button.dataset.month;
 
       monthButton.textContent =
-        `${monthNames[currentMonth]} ▾`;
+        monthNames[currentMonth];
 
       monthOptions.classList.remove("show");
 
@@ -1083,19 +998,11 @@ if (monthButton && monthOptions) {
 }
 
 
-// ============================================================
-// 9. INICIALIZAÇÃO
-// Ao abrir a página, mostra o primeiro ponto (P1).
-// ============================================================
 // Começa mostrando P1
 updatePCQ("P1");
 
 
 
-// ============================================================
-// 10. MENU ATIVO E SESSÃO
-// Destaca no menu a seção visível e mostra Entrar ou o nome do usuário + Sair.
-// ============================================================
   // Active nav highlight on scroll
   const sections = document.querySelectorAll('section[id], div[id]');
   const navLinks = document.querySelectorAll('nav a[href^="#"]');
@@ -1110,7 +1017,7 @@ updatePCQ("P1");
     });
   });
 
-  // 10.1 Sessão: mostra "Entrar" ou o nome do usuário logado + botão Sair
+  // Session / logout (nav)
   const navUser = document.getElementById('navUser');
   if (navUser) {
     const raw = localStorage.getItem('ypora_session');
@@ -1133,10 +1040,6 @@ updatePCQ("P1");
   }
 
   
-// ============================================================
-// 11. RESUMO DA PÁGINA INICIAL
-// Calcula as médias de setembro mostradas no cartão "Qualidade Atual".
-// ============================================================
 function atualizarResumoInicial() {
   const pontos = Object.values(pcqData);
   const mes = "setembro";
@@ -1173,10 +1076,6 @@ function atualizarResumoInicial() {
 
 atualizarResumoInicial();
 
-// ============================================================
-// 12. MODAIS (JANELAS)
-// Abrir/fechar janelas, fechar ao clicar fora ou apertar Esc.
-// ============================================================
 function openModal(id) {
   const modal = document.getElementById(id);
   if (modal) {
@@ -1207,10 +1106,6 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-// ============================================================
-// 13. GALERIA DE AMOSTRAS
-// Cria os cards de foto, a janela com setas e o botão "ver dados do ponto".
-// ============================================================
 // Galeria de fotos das amostras
 const samplesGrid = document.getElementById('samplesGrid');
 const samplePoints = Object.keys(imagensPCQ);
