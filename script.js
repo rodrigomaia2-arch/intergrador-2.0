@@ -621,8 +621,101 @@ const pcqData = {
       coliformesTotais: "1",
       coliformesTermotolerantes: "Ausente"
     }
-  }
+  },
+
+P17: {
+  bairro: "Serrano 2",
+  tipo: "A definir",
+  endereco: "A definir",
+  coordenadas: "A definir"
+},
+
+P18: {
+  bairro: "Interlagos",
+  tipo: "A definir",
+  endereco: "A definir",
+  coordenadas: "A definir"
+},
+
+P19: {
+  bairro: "Centro",
+  tipo: "A definir",
+  endereco: "Em frente Borboleta",
+  coordenadas: "A definir"
+},
+
+P20: {
+  bairro: "Oeste",
+  tipo: "A definir",
+  endereco: "A definir",
+  coordenadas: "A definir"
+},
+
+P21: {
+  bairro: "Jardim Paulista",
+  tipo: "A definir",
+  endereco: "Casa da Ila",
+  coordenadas: "A definir"
+},
+
+P22: {
+  bairro: "Jardim Paulista",
+  tipo: "A definir",
+  endereco: "A definir",
+  coordenadas: "A definir"
+},
+
+P23: {
+  bairro: "Milena",
+  tipo: "A definir",
+  endereco: "Casa próx. a Esc. Vereador José Odete",
+  coordenadas: "A definir"
+},
+
+P24: {
+  bairro: "Chapadão",
+  tipo: "A definir",
+  endereco: "Casa próx. ao posto de saúde",
+  coordenadas: "A definir"
+},
+
+P25: {
+  bairro: "Setor Sul",
+  tipo: "A definir",
+  endereco: "Bar do Sr. Francisco",
+  coordenadas: "A definir"
+},
+
+P26: {
+  bairro: "Vila Regina",
+  tipo: "A definir",
+  endereco: "Posto de saúde",
+  coordenadas: "A definir"
+},
+
+P27: {
+  bairro: "Santa Clara",
+  tipo: "A definir",
+  endereco: "Gás e água Paraíso",
+  coordenadas: "A definir"
+},
+
+P28: {
+  bairro: "Nova Esperança",
+  tipo: "A definir",
+  endereco: "Panificadora Pão Império",
+  coordenadas: "A definir"
+},
+
+P29: {
+  bairro: "Pouso Alegre",
+  tipo: "A definir",
+  endereco: "Borracharia do Kiko",
+  coordenadas: "A definir"
+}
+
 };
+
 
 
 // Mês selecionado
@@ -773,13 +866,32 @@ function updatePCQ(point) {
 
   const data = pcqData[point];
   
+
 const pcqImage = document.getElementById("pcqImage");
 
+if (pcqImage) {
+  const imagemDoPonto = imagensPCQ[point];
+  const linhaImagem = pcqImage.closest(".info-row");
 
-if (pcqImage && imagensPCQ[point]) {
-  pcqImage.src = imagensPCQ[point];
-  pcqImage.alt = `Foto do local ${point}`;
+  if (imagemDoPonto) {
+    pcqImage.src = imagemDoPonto;
+    pcqImage.alt = `Foto do local ${point}`;
+    pcqImage.style.display = "block";
+
+    if (linhaImagem) {
+      linhaImagem.style.display = "";
+    }
+  } else {
+    pcqImage.removeAttribute("src");
+    pcqImage.alt = "";
+    pcqImage.style.display = "none";
+
+    if (linhaImagem) {
+      linhaImagem.style.display = "none";
+    }
+  }
 }
+
 
 
   if (!data) return;
