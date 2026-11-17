@@ -1,16 +1,5 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-BR">
-<!-- ============================================================
-     YPORÃ · PÁGINA PRINCIPAL (index.html)
-     Seções da página, na ordem em que aparecem:
-       1. Cabeçalho (menu)          7. Dicas
-       2. Início (hero)             8. Notícias
-       3. Barra de números          9. Sobre o projeto + fotos da equipe
-       4. Mapa dos PCQs            10. Rodapé
-       5. Amostras                 11. Janela (modal) da amostra
-       6. Origem da água           12. Scripts
-     Estilos em style.css · comportamento e dados em script.js
-     ============================================================ -->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,11 +10,7 @@
 </head>
 <body>
 
-<!-- ============================================================
-     1. CABEÇALHO
-     Logo, menu de navegação e área do usuário (Entrar/Sair).
-     O botão Entrar/Sair é preenchido por script.js (seção 10).
-     ============================================================ -->
+<!-- ── HEADER ── -->
 <header id="header">
   <a href="#" class="logo-area">
     <div class="logo-icon"><img src="img/logo-ypora.png" alt="Logo do projeto Yporã"></div>
@@ -45,11 +30,7 @@
   </nav>
 </header>
 
-<!-- ============================================================
-     2. INÍCIO (HERO)
-     Apresentação do projeto e cartão "Qualidade Atual".
-     As médias do cartão são calculadas em script.js (seção 11).
-     ============================================================ -->
+<!-- ── HERO ── -->
 <section class="hero" id="inicio">
   <div class="hero-bg"></div>
   <div class="bubble"></div>
@@ -57,7 +38,7 @@
   <div class="bubble"></div>
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-tag">Monitoramento Ativo · <span data-pcq-total>16</span> PCQs</div>
+      <div class="hero-tag">Monitoramento Ativo · 16 PCQs</div>
       <h1>A <em>qualidade da água</em> que chega à sua casa</h1>
       <div class="hero-text">
         <p>O Yporã busca verificar a qualidade da água dos pontos de coleta de Paraíso do Tocantins. O projeto, feito por alunos do Instituto Federal do Tocantins, foi criado para analisar e registrar dados específicos da água fornecida aos moradores de Paraíso, como pH, cloro livre, fluoreto e outros, baseando-se nos dados fornecidos pelo curso de Meio Ambiente do Instituto Federal para chegar a uma estimativa da qualidade da água fornecida à população pelos pontos de coleta.</p>
@@ -78,7 +59,7 @@
 </div>
 
 <div class="quality-circle">
-  <span data-pcq-total>16</span>
+  <span>29</span>
   <small>PCQs monitorados</small>
 </div>
 
@@ -113,15 +94,11 @@
   </div>
 </section>
 
-<!-- ============================================================
-     3. BARRA DE NÚMEROS
-     Números de destaque do projeto. O total de PCQs é preenchido
-     automaticamente (atributo data-pcq-total).
-     ============================================================ -->
+<!-- ── STATS BAR ── -->
 <div class="stats-bar">
   <div class="stats-inner">
     <div class="stat-item reveal">
-      <div class="stat-num" data-pcq-total>16</div>
+      <div class="stat-num">16</div>
       <div class="stat-label">PCQs Monitorados</div>
     </div>
     <div class="stat-item reveal">
@@ -139,11 +116,7 @@
   </div>
 </div>
 
-<!-- ============================================================
-     4. MAPA DOS PCQs
-     Esquerda: painel do ponto selecionado + tabela de padrões.
-     Direita: mapa do Google + lista de pontos (gerada por script.js).
-     ============================================================ -->
+<!-- ── MAP SECTION ── -->
 <section class="map-section" id="mapa">
   <div class="section-inner">
     <div class="reveal">
@@ -153,50 +126,26 @@
     </div>
     <div class="map-layout reveal">
       <div class="map-main">
-        <!-- 4.1 Painel do ponto selecionado: código, tipo, endereço, coordenadas e foto -->
-        <div class="pcq-info-panel">
-          <h4 id="pcqTitle">P1 · Paraíso dos Ipês</h4>
-          <div class="pcq-info-grid">
-            <div class="pcq-info-rows">
-            <div class="info-row">
-                <span class="k">Código</span>
-                <span class="v" id="pcqCode">P1</span>
-              </div>
-
-              <div class="info-row">
-                <span class="k">Tipo de ponto</span>
-                <span class="v" id="pcqType">Residencial</span>
-              </div>
-
-              <div class="info-row">
-                <span class="k">Endereço</span>
-                <span class="v" id="pcqAddress">Rua 21, n. 201</span>
-              </div>
-
-              <div class="info-row">
-                <span class="k">Coordenadas</span>
-                <span class="v" id="pcqCoordinates">10°11'48.13"S 48°54'32.24"W</span>
-              </div>
-            </div>
-            <img id="pcqImage" src="img/P1 - Paraiso do Ipes.jpeg" alt="Foto do ponto de coleta P1" class="pcq-image">
+        <div class="map-container" style="position:relative;">
+          <iframe
+            id="pcqMap"
+            src="https://maps.google.com/maps?q=-10.1769,-48.8801&z=13&output=embed"
+            style="width:100%;height:100%;border:none;display:block;"
+            title="Mapa de Paraíso do Tocantins"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+          <div style="position:absolute;top:8px;left:8px;background:white;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;color:var(--blue-deep);box-shadow:0 2px 8px rgba(0,0,0,.15);">
+            📍 <span id="pcqMapLabel">Paraíso do Tocantins – TO</span>
           </div>
         </div>
-        <!-- 4.2 Tabela de padrões (Portaria GM/MS nº 888/2021) + seletor de mês.
-             As linhas são preenchidas por script.js (seção 5). -->
         <div class="map-standards" id="dados">
           <h3>📊 Padrões de Qualidade da Água</h3>
           <p>Resultados do ponto selecionado comparados com os valores máximos permitidos pela Portaria GM/MS nº 888/2021.</p>
           <div class="params-context">
             <span id="paramsPoint">P1 · Paraíso dos Ipês</span>
-            <div class="month-selector">
-              <span class="month-label">Mês da análise:</span>
-              <button type="button" id="monthButton">Junho/2026 ▾</button>
-              <div id="monthOptions" class="month-options">
-                <button type="button" data-month="junho">Junho/2026</button>
-                <button type="button" data-month="agosto">Agosto/2026</button>
-                <button type="button" data-month="setembro">Setembro/2026</button>
-              </div>
-            </div>
+            <span id="paramsMonth">Junho/2026</span>
             <span id="paramsQuality" class="quality-pill">A definir</span>
           </div>
           <div class="table-wrapper">
@@ -215,34 +164,293 @@
           </div>
         </div>
       </div>
-      <!-- 4.3 Mapa do Google (vai até o ponto clicado) e lista de pontos -->
       <div class="map-sidebar">
-        <div class="map-container" style="position:relative;">
-          <iframe
-            id="pcqMap"
-            src="https://maps.google.com/maps?q=-10.1769,-48.8801&z=13&output=embed"
-            style="width:100%;height:100%;border:none;display:block;"
-            title="Mapa de Paraíso do Tocantins"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen>
-          </iframe>
-          <div style="position:absolute;top:8px;left:8px;background:white;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;color:var(--blue-deep);box-shadow:0 2px 8px rgba(0,0,0,.15);">
-            📍 <span id="pcqMapLabel">Paraíso do Tocantins – TO</span>
-          </div>
-        </div>
-        <h3>Pontos de Coleta (<span data-pcq-total>16</span>)</h3>
-        <div class="pcq-list" id="pcqList"></div>
-      </div>
+        <h3>Pontos de Coleta (16)</h3>
+
+  <div class="pcq-info-panel">
+  <h4 id="pcqTitle">P1 · Paraíso dos Ipês</h4>
+
+  <div class="info-row">
+    <span class="k">Código</span>
+    <span class="v" id="pcqCode">P1</span>
+  </div>
+
+  <div class="info-row">
+    <span class="k">Tipo de ponto</span>
+    <span class="v" id="pcqType">Residencial</span>
+  </div>
+
+  <div class="info-row">
+    <span class="k">Endereço</span>
+    <span class="v" id="pcqAddress">Rua 21, n. 201</span>
+  </div>
+
+  <div class="info-row">
+    <span class="k">Coordenadas</span>
+    <span class="v" id="pcqCoordinates">10°11'48.13"S 48°54'32.24"W</span>
+  </div>
+  
+<div class="info-row">
+  <span class="k">Foto do local</span>
+  <img id="pcqImage" src="img/P1 - Paraiso do Ipes.jpeg" alt="Foto do ponto de coleta P1" class="pcq-image">
+</div>
+
+  <div class="info-row">
+  <span class="k">Mês da coleta</span>
+
+  <div class="month-selector">
+    <button type="button" id="monthButton">Mês</button>
+
+    <div id="monthOptions" class="month-options">
+      <button type="button" data-month="junho">Junho/2026</button>
+      <button type="button" data-month="agosto">Agosto/2026</button>
+      <button type="button" data-month="setembro">Setembro/2026</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="pcq-list">
+
+  <div class="pcq-card active">
+    <div>
+      <div class="pcq-id">P1</div>
+      <div class="pcq-detail">Paraíso dos Ipês</div>
+    </div>
+    <div class="pcq-status good"></div>
+  </div>
+
+  <div class="pcq-card">
+    <div>
+      <div class="pcq-id">P2</div>
+      <div class="pcq-detail">Área Verde</div>
+    </div>
+    <div class="pcq-status good"></div>
+  </div>
+
+  <div class="pcq-card">
+    <div>
+      <div class="pcq-id">P3</div>
+      <div class="pcq-detail">Setor Bueno</div>
+    </div>
+    <div class="pcq-status good"></div>
+  </div>
+
+  <div class="pcq-card">
+    <div>
+      <div class="pcq-id">P4</div>
+      <div class="pcq-detail">Setor Marista</div>
+    </div>
+    <div class="pcq-status good"></div>
+  </div>
+
+  <div class="pcq-card">
+    <div>
+      <div class="pcq-id">P5</div>
+      <div class="pcq-detail">Nova Fronteira</div>
+    </div>
+    <div class="pcq-status good"></div>
+  </div>
+
+  <div class="pcq-card">
+    <div>
+      <div class="pcq-id">P6</div>
+      <div class="pcq-detail">Jardim América</div>
+    </div>
+    <div class="pcq-status good"></div>
+  </div>
+
+  <div class="pcq-card">
+    <div>
+      <div class="pcq-id">P7</div>
+      <div class="pcq-detail">Parque das Águas</div>
+    </div>
+    <div class="pcq-status good"></div>
+  </div>
+
+  <div class="pcq-card">
+    <div>
+      <div class="pcq-id">P8</div>
+      <div class="pcq-detail">Setor Bela Vista</div>
+    </div>
+    <div class="pcq-status good"></div>
+  </div>
+
+  <div class="pcq-card">
+    <div>
+      <div class="pcq-id">P9</div>
+      <div class="pcq-detail">Residencial Serra Verde</div>
+    </div>
+    <div class="pcq-status good"></div>
+  </div>
+
+  <div class="pcq-card">
+    <div>
+      <div class="pcq-id">P10</div>
+      <div class="pcq-detail">Jardim Limeira</div>
+    </div>
+    <div class="pcq-status good"></div>
+  </div>
+
+  <div class="pcq-card">
+    <div>
+      <div class="pcq-id">P11</div>
+      <div class="pcq-detail">Parque dos Buritis</div>
+    </div>
+    <div class="pcq-status good"></div>
+  </div>
+
+  <div class="pcq-card">
+    <div>
+      <div class="pcq-id">P12</div>
+      <div class="pcq-detail">Setor Universitário</div>
+    </div>
+    <div class="pcq-status good"></div>
+  </div>
+
+  <div class="pcq-card">
+    <div>
+      <div class="pcq-id">P13</div>
+      <div class="pcq-detail">Serrano</div>
+    </div>
+    <div class="pcq-status good"></div>
+  </div>
+
+  <div class="pcq-card">
+    <div>
+      <div class="pcq-id">P14</div>
+      <div class="pcq-detail">Novo Jardim Paulista</div>
+    </div>
+    <div class="pcq-status good"></div>
+  </div>
+
+  <div class="pcq-card">
+    <div>
+      <div class="pcq-id">P15</div>
+      <div class="pcq-detail">Centro</div>
+    </div>
+    <div class="pcq-status good"></div>
+  </div>
+
+  <div class="pcq-card">
+    <div>
+      <div class="pcq-id">P16</div>
+      <div class="pcq-detail">Oeste</div>
+    </div>
+    <div class="pcq-status good"></div>
+  </div>
+
+  <div class="pcq-card">
+  <div>
+    <div class="pcq-id">P17</div>
+    <div class="pcq-detail">Serrano 2</div>
+  </div>
+  <div class="pcq-status"></div>
+</div>
+
+<div class="pcq-card">
+  <div>
+    <div class="pcq-id">P18</div>
+    <div class="pcq-detail">Interlagos</div>
+  </div>
+  <div class="pcq-status"></div>
+</div>
+
+<div class="pcq-card">
+  <div>
+    <div class="pcq-id">P19</div>
+    <div class="pcq-detail">Centro · Em frente Borboleta</div>
+  </div>
+  <div class="pcq-status"></div>
+</div>
+
+<div class="pcq-card">
+  <div>
+    <div class="pcq-id">P20</div>
+    <div class="pcq-detail">Oeste</div>
+  </div>
+  <div class="pcq-status"></div>
+</div>
+
+<div class="pcq-card">
+  <div>
+    <div class="pcq-id">P21</div>
+    <div class="pcq-detail">Jardim Paulista · Casa da Ila</div>
+  </div>
+  <div class="pcq-status"></div>
+</div>
+
+<div class="pcq-card">
+  <div>
+    <div class="pcq-id">P22</div>
+    <div class="pcq-detail">Jardim Paulista</div>
+  </div>
+  <div class="pcq-status"></div>
+</div>
+
+<div class="pcq-card">
+  <div>
+    <div class="pcq-id">P23</div>
+    <div class="pcq-detail">Milena · Casa próx. a Esc. Vereador José Odete</div>
+  </div>
+  <div class="pcq-status"></div>
+</div>
+
+<div class="pcq-card">
+  <div>
+    <div class="pcq-id">P24</div>
+    <div class="pcq-detail">Chapadão · Casa próx. ao posto de saúde</div>
+  </div>
+  <div class="pcq-status"></div>
+</div>
+
+<div class="pcq-card">
+  <div>
+    <div class="pcq-id">P25</div>
+    <div class="pcq-detail">Setor Sul · Bar do Sr. Francisco</div>
+  </div>
+  <div class="pcq-status"></div>
+</div>
+
+<div class="pcq-card">
+  <div>
+    <div class="pcq-id">P26</div>
+    <div class="pcq-detail">Vila Regina · Posto de saúde</div>
+  </div>
+  <div class="pcq-status"></div>
+</div>
+
+<div class="pcq-card">
+  <div>
+    <div class="pcq-id">P27</div>
+    <div class="pcq-detail">Santa Clara · Gás e água Paraíso</div>
+  </div>
+  <div class="pcq-status"></div>
+</div>
+
+<div class="pcq-card">
+  <div>
+    <div class="pcq-id">P28</div>
+    <div class="pcq-detail">Nova Esperança · Panificadora Pão Império</div>
+  </div>
+  <div class="pcq-status"></div>
+</div>
+
+<div class="pcq-card">
+  <div>
+    <div class="pcq-id">P29</div>
+    <div class="pcq-detail">Pouso Alegre · Borracharia do Kiko</div>
+  </div>
+  <div class="pcq-status"></div>
+</div>
+
+</div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     5. AMOSTRAS
-     Galeria com a foto de cada ponto. Os cards são criados por
-     script.js (seção 13) a partir de pcqData.
-     ============================================================ -->
+<!-- ── SAMPLES SECTION ── -->
 <section class="samples-section" id="amostras">
   <div class="section-inner">
     <div class="reveal">
@@ -254,11 +462,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     6. ORIGEM DA ÁGUA
-     Caminho da água (manancial → torneira), foto da Barragem do Coco,
-     números em destaque, alerta sobre a crise hídrica e fontes.
-     ============================================================ -->
+<!-- ── ORIGIN SECTION ── -->
 <section id="origem">
   <div class="section-inner">
     <div class="origin-layout">
@@ -302,7 +506,7 @@
             <div class="step-num">5</div>
             <div class="step-body">
               <h4>Monitoramento (PCQ)</h4>
-              <p>Os <span data-pcq-total>16</span> Pontos de Coleta de Qualidade espalhados pelos setores verificam se a água que chega às torneiras mantém os padrões de potabilidade da Portaria GM/MS nº 888/2021.</p>
+              <p>Os 16 Pontos de Coleta de Qualidade espalhados pelos setores verificam se a água que chega às torneiras mantém os padrões de potabilidade da Portaria GM/MS nº 888/2021.</p>
             </div>
           </div>
         </div>
@@ -334,10 +538,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     7. DICAS
-     Cartões com dicas de cuidado e uso consciente da água.
-     ============================================================ -->
+<!-- ── TIPS SECTION ── -->
 <section class="tips-section" id="dicas">
   <div class="section-inner">
     <div class="reveal">
@@ -380,11 +581,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     8. NOTÍCIAS
-     Notícias reais sobre a água em Paraíso do Tocantins.
-     Cada cartão é um link para a matéria original.
-     ============================================================ -->
+<!-- ── NEWS SECTION ── -->
 <section id="noticias">
   <div class="section-inner">
     <div class="reveal">
@@ -433,10 +630,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     9. SOBRE O PROJETO
-     Cartões das equipes e galeria de fotos da Equipe Técnica.
-     ============================================================ -->
+<!-- ── ABOUT SECTION ── -->
 <section class="about-section" id="sobre">
   <div class="section-inner">
     <div class="reveal">
@@ -445,10 +639,11 @@
       <p class="section-sub">O Yporã é uma iniciativa de transparência e conscientização sobre a qualidade da água em Paraíso do Tocantins. Nosso objetivo é aproximar a população dos dados reais de monitoramento, promovendo confiança e educação ambiental.</p>
     </div>
     <div class="team-grid reveal">
-      <div class="team-card">
+      <div class="team-card team-card-clickable" role="button" tabindex="0" onclick="openModal('modal-tecnica')" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openModal('modal-tecnica'); }">
         <div class="avatar">👩‍🔬</div>
         <h4>Equipe Técnica</h4>
         <p>Responsável pelo monitoramento e análise dos PCQs</p>
+        <span class="team-card-cta">📷 Ver fotos</span>
       </div>
       <div class="team-card">
         <div class="avatar">💻</div>
@@ -466,46 +661,10 @@
         <p>Instituições e organizações colaboradoras</p>
       </div>
     </div>
-    <!-- 9.1 Galeria de fotos da Equipe Técnica (sempre visível) -->
-    <div class="team-gallery reveal">
-      <h3>📷 Equipe Técnica em ação</h3>
-      <p>Atividades de campo, coletas e análises laboratoriais em Paraíso do Tocantins.</p>
-      <div class="gallery-grid">
-        <!-- Foto Principal do Grupo -->
-        <div class="gallery-item main-photo">
-          <img src="img/equipe-grupo.jpeg" alt="Equipe Técnica no campo">
-          <span>Equipe de campo e monitoramento</span>
-        </div>
-
-        <!-- Outras Fotos das Atividades -->
-        <div class="gallery-item">
-          <img src="img/equipe-lab-1.jpeg" alt="Análise em laboratório">
-          <span>Análise no laboratório</span>
-        </div>
-
-        <div class="gallery-item">
-          <img src="img/equipe-lab-2.jpeg" alt="Medição de parâmetros">
-          <span>Preparo e medição de amostras</span>
-        </div>
-
-        <div class="gallery-item">
-          <img src="img/equipe-campo-1.jpeg" alt="Coleta de água">
-          <span>Coleta de amostra em ponto residencial</span>
-        </div>
-
-        <div class="gallery-item">
-          <img src="img/equipe-campo-2.jpeg" alt="Coleta de campo">
-          <span>Coleta de água em torneira</span>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- ============================================================
-     10. RODAPÉ
-     Logo, links rápidos e direitos autorais.
-     ============================================================ -->
+<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
@@ -543,11 +702,44 @@
     <span>Direitos Autorais Reservados</span>
   </div>
 </footer>
-<!-- ============================================================
-     11. JANELA (MODAL) DA AMOSTRA
-     Abre ao clicar numa foto da seção Amostras.
-     Permite passar as fotos e ir direto para os dados do ponto.
-     ============================================================ -->
+  <!-- MODAL GALERIA EQUIPE TÉCNICA -->
+<div id="modal-tecnica" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('modal-tecnica')">&times;</span>
+    <h2>Equipe Técnica</h2>
+    <p>Atividades de campo, coletas e análises laboratoriais em Paraíso do Tocantins.</p>
+    
+    <div class="gallery-grid">
+      <!-- Foto Principal do Grupo -->
+      <div class="gallery-item main-photo">
+        <img src="img/equipe-grupo.jpeg" alt="Equipe Técnica no campo">
+        <span>Equipe de campo e monitoramento</span>
+      </div>
+
+      <!-- Outras Fotos das Atividades -->
+      <div class="gallery-item">
+        <img src="img/equipe-lab-1.jpeg" alt="Análise em laboratório">
+        <span>Análise no laboratório</span>
+      </div>
+
+      <div class="gallery-item">
+        <img src="img/equipe-lab-2.jpeg" alt="Medição de parâmetros">
+        <span>Preparo e medição de amostras</span>
+      </div>
+
+      <div class="gallery-item">
+        <img src="img/equipe-campo-1.jpeg" alt="Coleta de água">
+        <span>Coleta de amostra em ponto residencial</span>
+      </div>
+
+      <div class="gallery-item">
+        <img src="img/equipe-campo-2.jpeg" alt="Coleta de campo">
+        <span>Coleta de água em torneira</span>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL FOTO DA AMOSTRA -->
 <div id="modal-amostra" class="modal">
   <div class="modal-content sample-modal">
     <span class="close-btn" onclick="closeModal('modal-amostra')">&times;</span>
@@ -564,10 +756,6 @@
     </div>
   </div>
 </div>
-<!-- ============================================================
-     12. SCRIPTS
-     script.js controla toda a interatividade da página.
-     ============================================================ -->
 <script src="script.js"></script>
 </body>
 </html>
