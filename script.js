@@ -853,7 +853,6 @@ function atualizarTabelaParametros(point, data, mes) {
   });
 
   document.getElementById("paramsPoint").textContent = `${point} · ${data.bairro}`;
-  document.getElementById("paramsMonth").textContent = monthNames[currentMonth];
 
   const qualidade = Object.keys(mes).length ? verificarQualidade(mes) : "Sem dados";
   const pill = document.getElementById("paramsQuality");

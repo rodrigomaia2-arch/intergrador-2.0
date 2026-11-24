@@ -828,6 +828,9 @@
 }
 
 .params-context .month-selector { display: inline-flex; align-items: center; gap: 6px; }
+.params-context .month-options { left: 0; right: auto; }
+.map-standards-head { margin-bottom: 20px; position: relative; z-index: 5; }
+.params-context .month-label { background: none; box-shadow: none; padding: 0; color: var(--gray-600); }
 .month-label { font-size: 12px; font-weight: 600; color: var(--gray-600); }
 #monthButton {
   background: var(--blue-main);

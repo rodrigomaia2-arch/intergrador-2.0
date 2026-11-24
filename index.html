@@ -124,16 +124,26 @@
       <h2 class="section-title">Mapa dos PCQs</h2>
       <p class="section-sub">Clique em um ponto para ver os dados de qualidade da água coletados naquele local de Paraíso do Tocantins.</p>
     </div>
+    <div class="map-standards map-standards-head reveal" id="dados">
+      <h3>📊 Padrões de Qualidade da Água</h3>
+      <p>Resultados do ponto selecionado comparados com os valores máximos permitidos pela Portaria GM/MS nº 888/2021.</p>
+      <div class="params-context">
+        <span id="paramsPoint">P1 · Paraíso dos Ipês</span>
+        <div class="month-selector">
+          <span class="month-label">Mês da coleta:</span>
+          <button type="button" id="monthButton">Junho/2026 ▾</button>
+          <div id="monthOptions" class="month-options">
+            <button type="button" data-month="junho">Junho/2026</button>
+            <button type="button" data-month="agosto">Agosto/2026</button>
+            <button type="button" data-month="setembro">Setembro/2026</button>
+          </div>
+        </div>
+        <span id="paramsQuality" class="quality-pill">A definir</span>
+      </div>
+    </div>
     <div class="map-layout reveal">
       <div class="map-main">
-        <div class="map-standards" id="dados">
-          <h3>📊 Padrões de Qualidade da Água</h3>
-          <p>Resultados do ponto selecionado comparados com os valores máximos permitidos pela Portaria GM/MS nº 888/2021.</p>
-          <div class="params-context">
-            <span id="paramsPoint">P1 · Paraíso dos Ipês</span>
-            <span id="paramsMonth">Junho/2026</span>
-            <span id="paramsQuality" class="quality-pill">A definir</span>
-          </div>
+        <div class="map-standards">
           <div class="table-wrapper">
       <table>
         <thead>
@@ -151,7 +161,6 @@
         </div>
       </div>
       <div class="map-sidebar">
-        <h3>Pontos de Coleta (16)</h3>
         <div class="map-container" style="position:relative;">
           <iframe
             id="pcqMap"
@@ -166,6 +175,8 @@
             📍 <span id="pcqMapLabel">Paraíso do Tocantins – TO</span>
           </div>
         </div>
+
+        <h3>Pontos de Coleta (16)</h3>
 
   <div class="pcq-info-panel">
   <h4 id="pcqTitle">P1 · Paraíso dos Ipês</h4>
@@ -195,19 +206,6 @@
   <img id="pcqImage" src="img/P1 - Paraiso do Ipes.jpeg" alt="Foto do ponto de coleta P1" class="pcq-image">
 </div>
 
-  <div class="info-row">
-  <span class="k">Mês da coleta</span>
-
-  <div class="month-selector">
-    <button type="button" id="monthButton">Mês</button>
-
-    <div id="monthOptions" class="month-options">
-      <button type="button" data-month="junho">Junho/2026</button>
-      <button type="button" data-month="agosto">Agosto/2026</button>
-      <button type="button" data-month="setembro">Setembro/2026</button>
-    </div>
-  </div>
-</div>
 
 </div>
 
