@@ -126,20 +126,6 @@
     </div>
     <div class="map-layout reveal">
       <div class="map-main">
-        <div class="map-container" style="position:relative;">
-          <iframe
-            id="pcqMap"
-            src="https://maps.google.com/maps?q=-10.1769,-48.8801&z=13&output=embed"
-            style="width:100%;height:100%;border:none;display:block;"
-            title="Mapa de Paraíso do Tocantins"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen>
-          </iframe>
-          <div style="position:absolute;top:8px;left:8px;background:white;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;color:var(--blue-deep);box-shadow:0 2px 8px rgba(0,0,0,.15);">
-            📍 <span id="pcqMapLabel">Paraíso do Tocantins – TO</span>
-          </div>
-        </div>
         <div class="map-standards" id="dados">
           <h3>📊 Padrões de Qualidade da Água</h3>
           <p>Resultados do ponto selecionado comparados com os valores máximos permitidos pela Portaria GM/MS nº 888/2021.</p>
@@ -166,6 +152,20 @@
       </div>
       <div class="map-sidebar">
         <h3>Pontos de Coleta (16)</h3>
+        <div class="map-container" style="position:relative;">
+          <iframe
+            id="pcqMap"
+            src="https://maps.google.com/maps?q=-10.1769,-48.8801&z=13&output=embed"
+            style="width:100%;height:100%;border:none;display:block;"
+            title="Mapa de Paraíso do Tocantins"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+          <div style="position:absolute;top:8px;left:8px;background:white;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;color:var(--blue-deep);box-shadow:0 2px 8px rgba(0,0,0,.15);">
+            📍 <span id="pcqMapLabel">Paraíso do Tocantins – TO</span>
+          </div>
+        </div>
 
   <div class="pcq-info-panel">
   <h4 id="pcqTitle">P1 · Paraíso dos Ipês</h4>

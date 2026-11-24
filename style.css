@@ -345,11 +345,11 @@
    Layout em duas colunas, mapa, lista de pontos e painel do ponto.
    ============================================================ */
   .map-section { background: var(--gray-100); }
-  .map-layout { display: grid; grid-template-columns: 1fr 400px; gap: 40px; align-items: start; }
+  .map-layout { display: grid; grid-template-columns: 1fr 460px; gap: 40px; align-items: start; }
   .map-container {
     background: white; border-radius: var(--radius);
     box-shadow: var(--shadow); overflow: hidden;
-    aspect-ratio: 4/3; position: relative; flex-shrink: 0;
+    aspect-ratio: 4/3; position: relative; flex-shrink: 0; width: 100%;
     display: flex; align-items: center; justify-content: center;
   }
   .map-main { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
@@ -418,6 +418,7 @@
   .pcq-status.good { background: var(--teal); }
   .pcq-status.warn { background: #F39C12; }
   .pcq-status.ok   { background: var(--blue-light); }
+  .pcq-status.none { background: var(--gray-300); }
   .pcq-detail { font-size: 12px; color: var(--gray-600); }
 
   /* 7.2 Painel do ponto selecionado */
@@ -872,6 +873,11 @@
 
 .month-options button:hover {
   background: #f0f0f0;
+}
+.month-options button.selected {
+  background: var(--blue-glass);
+  color: var(--blue-deep);
+  font-weight: 700;
 }
 
 

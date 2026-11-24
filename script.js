@@ -940,6 +940,38 @@ document.querySelectorAll(".pcq-card").forEach(card => {
 });
 
 
+// Cor da bolinha de cada ponto conforme o mês selecionado
+// verde = potável, laranja = fora do padrão, cinza = sem dados
+function atualizarBolinhas() {
+  document.querySelectorAll(".pcq-card").forEach(card => {
+    const point = card.querySelector(".pcq-id").textContent.trim();
+    const mes = (pcqData[point] || {})[currentMonth];
+    const dot = card.querySelector(".pcq-status");
+    if (!dot) return;
+
+    dot.classList.remove("good", "warn", "none");
+
+    if (!mes || !Object.keys(mes).length) {
+      dot.classList.add("none");
+      dot.title = "Sem dados neste mês";
+    } else if (verificarQualidade(mes) === "Potável") {
+      dot.classList.add("good");
+      dot.title = "Potável";
+    } else {
+      dot.classList.add("warn");
+      dot.title = "Fora do padrão";
+    }
+  });
+}
+
+// Marca o mês escolhido no botão e na lista
+function marcarMesSelecionado() {
+  if (!monthButton || !monthOptions) return;
+  monthButton.textContent = monthNames[currentMonth] + " ▾";
+  monthOptions.querySelectorAll("button").forEach(b =>
+    b.classList.toggle("selected", b.dataset.month === currentMonth));
+}
+
 // Menu de meses
 const monthButton = document.getElementById("monthButton");
 const monthOptions = document.getElementById("monthOptions");
@@ -963,8 +995,8 @@ if (monthButton && monthOptions) {
 
       currentMonth = button.dataset.month;
 
-      monthButton.textContent =
-        monthNames[currentMonth];
+      marcarMesSelecionado();
+      atualizarBolinhas();
 
       monthOptions.classList.remove("show");
 
@@ -1000,6 +1032,8 @@ if (monthButton && monthOptions) {
 
 // Começa mostrando P1
 updatePCQ("P1");
+marcarMesSelecionado();
+atualizarBolinhas();
 
 
 
