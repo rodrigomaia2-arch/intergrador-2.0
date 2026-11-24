@@ -23,7 +23,7 @@
     <a href="#inicio" class="active">Início</a>
     <a href="#mapa">Mapa PCQs</a>
     <a href="#amostras">Amostras</a>
-    <a href="#noticias">Notícias</a>
+    <a href="#conscientizacao">Conscientização</a>
     <a href="#sobre">Sobre nós</a>
     <a href="#dados" class="btn-nav">Ver Dados</a>
     <div class="nav-user" id="navUser"></div>
@@ -159,56 +159,8 @@
       </table>
           </div>
         </div>
-      </div>
-      <div class="map-sidebar">
-        <div class="map-container" style="position:relative;">
-          <iframe
-            id="pcqMap"
-            src="https://maps.google.com/maps?q=-10.1769,-48.8801&z=13&output=embed"
-            style="width:100%;height:100%;border:none;display:block;"
-            title="Mapa de Paraíso do Tocantins"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen>
-          </iframe>
-          <div style="position:absolute;top:8px;left:8px;background:white;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;color:var(--blue-deep);box-shadow:0 2px 8px rgba(0,0,0,.15);">
-            📍 <span id="pcqMapLabel">Paraíso do Tocantins – TO</span>
-          </div>
-        </div>
-
-        <h3>Pontos de Coleta (16)</h3>
-
-  <div class="pcq-info-panel">
-  <h4 id="pcqTitle">P1 · Paraíso dos Ipês</h4>
-
-  <div class="info-row">
-    <span class="k">Código</span>
-    <span class="v" id="pcqCode">P1</span>
-  </div>
-
-  <div class="info-row">
-    <span class="k">Tipo de ponto</span>
-    <span class="v" id="pcqType">Residencial</span>
-  </div>
-
-  <div class="info-row">
-    <span class="k">Endereço</span>
-    <span class="v" id="pcqAddress">Rua 21, n. 201</span>
-  </div>
-
-  <div class="info-row">
-    <span class="k">Coordenadas</span>
-    <span class="v" id="pcqCoordinates">10°11'48.13"S 48°54'32.24"W</span>
-  </div>
-  
-<div class="info-row">
-  <span class="k">Foto do local</span>
-  <img id="pcqImage" src="img/P1 - Paraiso do Ipes.jpeg" alt="Foto do ponto de coleta P1" class="pcq-image">
-</div>
-
-
-</div>
-
+        <div class="pcq-list-block">
+          <h3>Pontos de Coleta (16)</h3>
 <div class="pcq-list">
 
   <div class="pcq-card active">
@@ -444,6 +396,56 @@
 </div>
 
 </div>
+        </div>
+      </div>
+      <div class="map-sidebar">
+        <div class="map-container" style="position:relative;">
+          <iframe
+            id="pcqMap"
+            src="https://maps.google.com/maps?q=-10.1769,-48.8801&z=13&output=embed"
+            style="width:100%;height:100%;border:none;display:block;"
+            title="Mapa de Paraíso do Tocantins"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+          <div style="position:absolute;top:8px;left:8px;background:white;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;color:var(--blue-deep);box-shadow:0 2px 8px rgba(0,0,0,.15);">
+            📍 <span id="pcqMapLabel">Paraíso do Tocantins – TO</span>
+          </div>
+        </div>
+
+
+  <div class="pcq-info-panel">
+  <h4 id="pcqTitle">P1 · Paraíso dos Ipês</h4>
+
+  <div class="info-row">
+    <span class="k">Código</span>
+    <span class="v" id="pcqCode">P1</span>
+  </div>
+
+  <div class="info-row">
+    <span class="k">Tipo de ponto</span>
+    <span class="v" id="pcqType">Residencial</span>
+  </div>
+
+  <div class="info-row">
+    <span class="k">Endereço</span>
+    <span class="v" id="pcqAddress">Rua 21, n. 201</span>
+  </div>
+
+  <div class="info-row">
+    <span class="k">Coordenadas</span>
+    <span class="v" id="pcqCoordinates">10°11'48.13"S 48°54'32.24"W</span>
+  </div>
+  
+<div class="info-row">
+  <span class="k">Foto do local</span>
+  <img id="pcqImage" src="img/P1 - Paraiso do Ipes.jpeg" alt="Foto do ponto de coleta P1" class="pcq-image">
+</div>
+
+
+</div>
+
     </div>
   </div>
 </section>
@@ -536,93 +538,48 @@
   </div>
 </section>
 
-<!-- ── TIPS SECTION ── -->
-<section class="tips-section" id="dicas">
+<!-- ── CONSCIENTIZAÇÃO SECTION (vídeos e fotos) ── -->
+<section class="tips-section" id="conscientizacao">
   <div class="section-inner">
     <div class="reveal">
-      <span class="section-tag">💡 Consciência</span>
-      <h2 class="section-title">Dicas de Economia e Reaproveitamento</h2>
-      <p class="section-sub">Pequenas ações no cotidiano fazem grande diferença para preservar os recursos hídricos da nossa região.</p>
+      <span class="section-tag">🎬 Conscientização</span>
+      <h2 class="section-title">Vídeos e Fotos de Conscientização</h2>
+      <p class="section-sub">Assista e compartilhe conteúdos sobre o uso consciente da água e a preservação dos recursos hídricos da nossa região.</p>
     </div>
-    <div class="tips-grid">
-      <div class="tip-card reveal">
-        <div class="tip-icon">🚿</div>
-        <h3>Reduza o Tempo no Banho</h3>
-        <p>Banhos de até 5 minutos economizam cerca de 80 litros de água. Prefira chuveiros com reguladores de vazão.</p>
-      </div>
-      <div class="tip-card reveal">
-        <div class="tip-icon">🌧️</div>
-        <h3>Colete Água da Chuva</h3>
-        <p>Use calhas e cisternas para captar água da chuva. Ela é ótima para regar plantas e lavar calçadas.</p>
-      </div>
-      <div class="tip-card reveal">
-        <div class="tip-icon">🔧</div>
-        <h3>Conserte Vazamentos</h3>
-        <p>Um torneira gotejando pode desperdiçar até 46 litros por dia. Verifique regularmente encanamentos e registros.</p>
-      </div>
-      <div class="tip-card reveal">
-        <div class="tip-icon">🫙</div>
-        <h3>Reaproveite a Água</h3>
-        <p>A água do enxágue de roupas, por exemplo, pode ser usada para lavar banheiros e áreas externas.</p>
-      </div>
-      <div class="tip-card reveal">
-        <div class="tip-icon">🌱</div>
-        <h3>Irrigue de Forma Inteligente</h3>
-        <p>Regue plantas no início da manhã ou fim da tarde para reduzir a evaporação. Use regadores em vez de mangueiras.</p>
-      </div>
-      <div class="tip-card reveal">
-        <div class="tip-icon">🍽️</div>
-        <h3>Economia na Cozinha</h3>
-        <p>Descongele alimentos na geladeira, não em água corrente. Use a água do cozimento de legumes para regar as plantas.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ── NEWS SECTION ── -->
-<section id="noticias">
-  <div class="section-inner">
-    <div class="reveal">
-      <span class="section-tag">📰 Atualidades</span>
-      <h2 class="section-title">Notícias sobre Água e Meio Ambiente</h2>
-      <p class="section-sub">Fique por dentro das principais novidades relacionadas à água, saneamento e sustentabilidade.</p>
+    <!-- VÍDEOS: troque VIDEO_ID pelo código do vídeo do YouTube
+         (ex.: https://www.youtube.com/watch?v=abc123 → abc123) -->
+    <h3 class="media-subtitle">🎥 Vídeos</h3>
+    <div class="media-grid">
+      <div class="media-card reveal">
+        <div class="media-frame media-empty">Vídeo em breve</div>
+        <!-- <div class="media-frame"><iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Vídeo de conscientização" loading="lazy" allowfullscreen></iframe></div> -->
+        <div class="media-body"><h4>Título do vídeo 1</h4></div>
+      </div>
+      <div class="media-card reveal">
+        <div class="media-frame media-empty">Vídeo em breve</div>
+        <div class="media-body"><h4>Título do vídeo 2</h4></div>
+      </div>
+      <div class="media-card reveal">
+        <div class="media-frame media-empty">Vídeo em breve</div>
+        <div class="media-body"><h4>Título do vídeo 3</h4></div>
+      </div>
     </div>
-<div class="news-grid">
-  
-  <!-- Notícia 1: Torneira solidária (g1 Tocantins) -->
-  <a class="news-card reveal" href="https://g1.globo.com/to/tocantins/noticia/2026/10/20/agua-oferecida-por-morador-em-torneira-solidaria-durante-crise-hidrica-no-interior-do-to-e-retirada-de-cisterna-video.ghtml" target="_blank" rel="noopener">
-    <div class="news-img"><img src="img/noticias/torneira-solidaria.jpg" alt="Torneira instalada no muro de uma casa com placa &quot;Pode pegar água aqui&quot; e baldes embaixo" loading="lazy"></div>
-    <div class="news-body">
-      <div class="news-cat">Crise Hídrica · g1 Tocantins</div>
-      <h3>Água oferecida por morador em torneira "solidária" durante crise hídrica no interior do TO é retirada de cisterna</h3>
-      <p>Em Paraíso do Tocantins, um servidor instalou uma torneira no muro de casa para doar água aos vizinhos durante o desabastecimento.</p>
-      <div class="news-date">📅 20 de Outubro de 2026</div>
-    </div>
-  </a>
 
-  <!-- Notícia 2: Decisão judicial (Agência Tocantins) -->
-  <a class="news-card reveal" href="https://www.agenciatocantins.com.br/noticia/111839/justica-determina-que-brk-forneca-agua-emergencial-a-populacao-de-paraiso-do-tocantins" target="_blank" rel="noopener">
-    <div class="news-img"><img src="img/noticias/brk-procon.webp" alt="Fiscal do Procon em frente à unidade da BRK Ambiental em Paraíso do Tocantins" loading="lazy"></div>
-    <div class="news-body">
-      <div class="news-cat">Abastecimento · Agência Tocantins</div>
-      <h3>Justiça determina que BRK forneça água emergencial à população de Paraíso do Tocantins</h3>
-      <p>Liminar obtida pelo MPTO dá 12 horas para atender unidades essenciais e 24 horas para a população afetada, sem custos.</p>
-      <div class="news-date">📅 19 de Outubro de 2026</div>
-    </div>
-  </a>
-
-  <!-- Notícia 3: Situação de emergência (Jornal Opção) -->
-  <a class="news-card reveal" href="https://tocantins.jornalopcao.com.br/noticias/em-meio-a-crise-sem-agua-paraiso-decreta-emergencia-por-180-dias-e-cobra-suspensao-de-tarifas-da-brk-entenda-o-caso-602749/" target="_blank" rel="noopener">
-    <div class="news-img"><img src="img/noticias/barragem-emergencia.webp" alt="Leito seco e rachado de represa em Paraíso do Tocantins" loading="lazy"></div>
-    <div class="news-body">
-      <div class="news-cat">Meio Ambiente · Jornal Opção</div>
-      <h3>Paraíso decreta emergência por 180 dias em meio à crise sem água</h3>
-      <p>Com a estiagem, a Barragem do Coco, principal manancial da cidade, opera em volume morto. A prefeitura cobra a suspensão das tarifas da BRK.</p>
-      <div class="news-date">📅 19 de Outubro de 2026</div>
-    </div>
-  </a>
-
-</div>
+    <!-- FOTOS: troque o bloco "media-empty" por <img src="img/conscientizacao/arquivo.jpg" alt="descrição"> -->
+    <h3 class="media-subtitle">📷 Fotos</h3>
+    <div class="media-grid">
+      <div class="media-card reveal">
+        <div class="media-frame media-empty">Foto em breve</div>
+        <div class="media-body"><h4>Legenda da foto 1</h4></div>
+      </div>
+      <div class="media-card reveal">
+        <div class="media-frame media-empty">Foto em breve</div>
+        <div class="media-body"><h4>Legenda da foto 2</h4></div>
+      </div>
+      <div class="media-card reveal">
+        <div class="media-frame media-empty">Foto em breve</div>
+        <div class="media-body"><h4>Legenda da foto 3</h4></div>
       </div>
     </div>
   </div>
@@ -685,8 +642,7 @@
     </div>
     <div class="footer-col">
       <h4>Mais</h4>
-      <a href="#dicas">Dicas de Economia</a>
-      <a href="#noticias">Notícias</a>
+      <a href="#conscientizacao">Conscientização</a>
       <a href="#sobre">Sobre o Projeto</a>
     </div>
     <div class="footer-col">
